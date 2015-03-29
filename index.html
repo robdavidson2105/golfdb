@@ -52,18 +52,24 @@
 				</tr>
 				<tr>
 					<td>Par</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked!==true">{{courseDatabase.pars[i-1]}}</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked===true">
-						<input width="12" align="middle" ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
-					</td>
+					<div data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+						<td ng-show="clicked!==true">{{courseDatabase.pars[i-1]}}</td>
+						<td ng-show="clicked===true">
+							<input ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
+						</td>
+					</div>
 				</tr>
 				<tr>
 					<td>Stroke Index</td>
 					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.strokeIndex[i-1]}}</td>
 				</tr>
 				<tr>
-					<td>Coords</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.holeGeoLats[i-1]}}, {{courseDatabase.holeGeoLongs[i-1]}}</td>
+					<td>Latitude</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.holeGeoLats[i-1]}}</td>
+				</tr>
+				<tr>
+					<td>Longitude</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.holeGeoLongs[i-1]}}</td>
 				</tr>
 			</table>
             <ul ng-show="showHoles === true">
