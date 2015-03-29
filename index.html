@@ -45,9 +45,12 @@
                     <input type="submit" value="Submit" ng-show="clicked === true" ng-click="clicked = false"></input>
                 </form>
             </div>
-			<div ng-show="showHoles === true" data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
-				<li> Hole {{i}} </li>
-			</div>
+			<table ng-show="showHoles === true">
+				<tr>
+				<div  data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+					<td>{{i}}
+				</div>
+			</table>
             <ul ng-show="showHoles === true">
                 <li>
                     Hole 1 Par - {{courseDatabase.pars[0]}}, Hole 1 Geo Position - 
