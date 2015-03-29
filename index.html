@@ -54,8 +54,11 @@
 					<th>Longitude</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+					<td>
+						{{i}}
+					</td>
 					<td ng-show="clicked!==true" align="center">
-							{{courseDatabase.pars[i-1]}}
+						{{courseDatabase.pars[i-1]}}
 					</td>
 					<td ng-show="clicked===true" align="center">
 						<input style="text-align: center" maxlength="1" size="2" ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
