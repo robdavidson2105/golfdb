@@ -61,7 +61,12 @@
 				</tr>
 				<tr>
 					<td>Stroke Index</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.strokeIndex[i-1]}}</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked!==true" align="center">
+						{{courseDatabase.strokeIndex[i-1]}}
+					</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked===true" align="center">
+						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.strokeIndex[i-1]" placeholder="Par"/>
+					</td>
 				</tr>
 				<tr>
 					<td>Latitude</td>
@@ -72,106 +77,7 @@
 					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" align="center">{{courseDatabase.holeGeoLongs[i-1]}}</td>
 				</tr>
 			</table>
-            <ul ng-show="showHoles === true">
-                <li>
-                    Hole 1 Par - {{courseDatabase.pars[0]}}, Hole 1 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[0]}},{{courseDatabase.holeGeoLongs[0]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[0]}}, {{courseDatabase.holeGeoLongs[0]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[0]}}
-                </li>
-                <li>
-                    Hole 2 Par - {{courseDatabase.pars[1]}}, Hole 2 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[1]}},{{courseDatabase.holeGeoLongs[1]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[1]}}, {{courseDatabase.holeGeoLongs[1]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[1]}}
-                </li>
-                <li>
-                    Hole 3 Par - {{courseDatabase.pars[2]}}, Hole 3 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[2]}},{{courseDatabase.holeGeoLongs[2]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[2]}}, {{courseDatabase.holeGeoLongs[2]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[2]}}
-                </li>
-                <li>
-                    Hole 4 Par - {{courseDatabase.pars[3]}}, Hole 4 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[3]}},{{courseDatabase.holeGeoLongs[3]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[3]}}, {{courseDatabase.holeGeoLongs[3]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[3]}}
-                </li>
-                <li>
-                    Hole 5 Par - {{courseDatabase.pars[4]}}, Hole 5 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[4]}},{{courseDatabase.holeGeoLongs[4]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[4]}}, {{courseDatabase.holeGeoLongs[4]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[4]}}
-                </li>
-                <li>
-                    Hole 6 Par - {{courseDatabase.pars[5]}}, Hole 6 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[5]}},{{courseDatabase.holeGeoLongs[5]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[5]}}, {{courseDatabase.holeGeoLongs[5]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[5]}}
-                </li>
-                <li>
-                    Hole 7 Par - {{courseDatabase.pars[6]}}, Hole 7 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[6]}},{{courseDatabase.holeGeoLongs[6]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[6]}}, {{courseDatabase.holeGeoLongs[6]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[6]}}
-                </li>
-                <li>
-                    Hole 8 Par - {{courseDatabase.pars[7]}}, Hole 8 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[7]}},{{courseDatabase.holeGeoLongs[7]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[7]}}, {{courseDatabase.holeGeoLongs[7]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[7]}}
-                </li>
-                <li>
-                    Hole 9 Par - {{courseDatabase.pars[8]}}, Hole 9 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[8]}},{{courseDatabase.holeGeoLongs[8]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[8]}}, {{courseDatabase.holeGeoLongs[8]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[8]}}
-                </li>
-                <li>
-                    Hole 10 Par - {{courseDatabase.pars[9]}}, Hole 10 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[9]}},{{courseDatabase.holeGeoLongs[9]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[9]}}, {{courseDatabase.holeGeoLongs[9]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[9]}}
-                </li>
-                <li>
-                    Hole 11 Par - {{courseDatabase.pars[10]}}, Hole 11 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[10]}},{{courseDatabase.holeGeoLongs[10]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[10]}}, {{courseDatabase.holeGeoLongs[10]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[10]}}
-                </li>
-                <li>
-                    Hole 12 Par - {{courseDatabase.pars[11]}}, Hole 12 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[11]}},{{courseDatabase.holeGeoLongs[11]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[11]}}, {{courseDatabase.holeGeoLongs[11]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[11]}}
-                </li>
-                <li>
-                    Hole 13 Par - {{courseDatabase.pars[12]}}, Hole 13 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[12]}},{{courseDatabase.holeGeoLongs[12]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[12]}}, {{courseDatabase.holeGeoLongs[12]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[12]}}
-                </li>
-                <li>
-                    Hole 14 Par - {{courseDatabase.pars[13]}}, Hole 14 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[13]}},{{courseDatabase.holeGeoLongs[13]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[13]}}, {{courseDatabase.holeGeoLongs[13]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[13]}}
-                </li>
-                <li>
-                    Hole 15 Par - {{courseDatabase.pars[14]}}, Hole 15 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[14]}},{{courseDatabase.holeGeoLongs[14]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[14]}}, {{courseDatabase.holeGeoLongs[14]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[14]}}
-                <li>
-                    Hole 16 Par - {{courseDatabase.pars[15]}}, Hole 16 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[15]}},{{courseDatabase.holeGeoLongs[15]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[15]}}, {{courseDatabase.holeGeoLongs[15]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[15]}}
-                </li>
-                <li>
-                    Hole 17 Par - {{courseDatabase.pars[16]}}, Hole 17 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[16]}},{{courseDatabase.holeGeoLongs[16]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[16]}}, {{courseDatabase.holeGeoLongs[16]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[16]}}
-                </li>
-                <li>
-                    Hole 18 Par - {{courseDatabase.pars[17]}}, Hole 18 Geo Position - 
-                    <a href="https://www.google.co.uk/maps/&#64;{{courseDatabase.holeGeoLats[17]}},{{courseDatabase.holeGeoLongs[17]}},20z/data=!3m1!1e3">{{courseDatabase.holeGeoLats[17]}}, {{courseDatabase.holeGeoLongs[17]}}</a>, Hole 1 Stroke Index - {{courseDatabase.strokeIndex[17]}}
-                </li>
-            </ul>
-            <p ng-show="clicked === true">Edit Hole Par</p>
-            <form>
-                <select ng-model="holeEditing" ng-show="clicked === true" name="holes">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                </select>
-                <input ng-model="courseDatabase.pars[holeEditing - 1]" ng-show="clicked === true" placeholder="Par"/>
-                <input ng-model="courseDatabase.strokeIndex[holeEditing - 1]" ng-show="clicked === true" placeholder="Stroke Index"/>
-                <input ng-model="courseDatabase.holeGeoLats[holeEditing - 1]" ng-show="clicked === true" placeholder="Latitude"/>
-                <input ng-model="courseDatabase.holeGeoLongs[holeEditing - 1]" ng-show="clicked === true" placeholder="Longitude"/>
-            </form>
+        </form>
         </div>
         <a href ng-click="addingCourse = true" class="myButton" ng-show="SignedIn === true">Add Course</a>
         <a href ng-show="addingCourse === true" ng-click="addingCourse = false" class="myButton2">Cancel</a>
