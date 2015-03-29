@@ -34,7 +34,7 @@
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
             </h2>
             <a href={{courseDatabase.geoLink}}>{{courseDatabase.location}}</a>
-            <a href ng-show="courseDatabase.author === Username" ng-click="clicked = true; showHoles = true" class="myButton">Edit</a>
+            <a href ng-show="courseDatabase.author === Username && clicked===false" ng-click="clicked = true; showHoles = true" class="myButton">Edit</a>
             <a href ng-show="clicked === true" ng-click="clicked = false; showHoles = false" class="myButton2">Cancel</a>
             <hr>
             <div>
