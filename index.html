@@ -47,12 +47,20 @@
             </div>
 			<table ng-show="showHoles === true">
 				<tr>
-					<td>Hole</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">Hole {{i}}</td>
+					<td>Hole number</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">{{i}}</td>
 				</tr>
 				<tr>
 					<td>Par</td>
-					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">Par {{courseDatabase.pars[i-1]}}</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">{{courseDatabase.pars[i-1]}}</td>
+				</tr>
+				<tr>
+					<td>Stroke Index</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">{{courseDatabase.strokeIndex[i-1]}}</td>
+				</tr>
+				<tr>
+					<td>Coords</td>
+					<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]">{{courseDatabase.holeGeoLats[i-1]}}, {{courseDatabase.holeGeoLongs[i-1]}}</td>
 				</tr>
 			</table>
             <ul ng-show="showHoles === true">
