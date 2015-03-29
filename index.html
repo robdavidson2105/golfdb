@@ -52,9 +52,11 @@
 				</tr>
 				<tr>
 					<td>Par</td>
-						<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked!==true">{{courseDatabase.pars[i-1]}}</td>
+						<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked!==true" align="center">
+							{{courseDatabase.pars[i-1]}}
+						</td>
 						<td data-ng-repeat="i in [1,2,3,4,5,6,7,8,9]" ng-show="clicked===true">
-							<input ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
+							<input style="text-align: center" ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
 						</td>
 				</tr>
 				<tr>
