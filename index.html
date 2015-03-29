@@ -36,13 +36,13 @@
             <a href={{courseDatabase.geoLink}}>{{courseDatabase.location}}</a>
             <a href ng-show="courseDatabase.author === Username" ng-click="clicked = true; showHoles = true" class="myButton">Edit</a>
             <a href ng-show="clicked === true" ng-click="clicked = false; showHoles = false" class="myButton2">Cancel</a>
-            <p class="splitterLine"><strong><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em><em>_</em>_</strong></p>
+            <hr>
             <div>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
                     <input ng-model="courseDatabase.name" ng-show="clicked === true" placeholder="Name" required></input>
                     <input ng-model="courseDatabase.location" ng-show="clicked === true" placeholder="Address" required></input>
                     <input ng-model="courseDatabase.geoLink" ng-show="clicked === true" placeholder="Google Maps Link" required></input>
-                    <input type="submit" value="Submit" ng-show="clicked === true" ng-click="clicked = false"></input>
+                    <input type="submit" value="Save" ng-show="clicked === true" ng-click="clicked = false"></input>
                 </form>
             </div>
 			<table ng-show="showHoles === true" border=1>
