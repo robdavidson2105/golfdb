@@ -21,13 +21,11 @@
     			$scope.$apply(function(){
     				for (var i = 0; i < results.length; i++) { 
       					var object = results[i];
-      					courseEntries.push({holes: object.get('Holes'), holeGeoLongs: object.get('Longitudes'), holeGeoLats: object.get('Latitudes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id});
+      					courseEntries.push({holes: object.get('Holes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id});
     				}	
     				$scope.courseDatabases = courseEntries;
     			})
   			}
-
-
    		});
     	
     	$scope.inputType = 'password';
@@ -38,8 +36,6 @@
 			courseInfos.set("Name", currentCourse.name);
 			courseInfos.set("Address", currentCourse.location);
 			courseInfos.set("MapsLink", currentCourse.geoLink);
-			courseInfos.set("Longitudes", empty);
-			courseInfos.set("Latitudes", empty);
 			courseInfos.set("Author", $scope.Username);
 			var hole = [];
 			courseInfos.set("Holes", empty);
@@ -60,16 +56,13 @@
 					CourseU.set("Name", currentCourse.name);
 					CourseU.set("Address", currentCourse.location);
 					CourseU.set("MapsLink", currentCourse.geoLink);
-					CourseU.set("Longitudes", currentCourse.holeGeoLongs);
-					CourseU.set("Latitudes", currentCourse.holeGeoLats);
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
 						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
 						currentCourse.holes[i] = hole[i];
 					};
 					CourseU.set("Holes", currentCourse.holes);
-					CourseU.save();
-					
+					CourseU.save();		
 				}
 			});
 		}
@@ -86,7 +79,6 @@
 					});
 				}
 			});
-
 		}
 
 		this.signUp = function(details){
@@ -99,12 +91,10 @@
 					if (currentUser) {
 						$scope.SignedIn = true;
 					} else {
-
 					}
 					window.location.reload(false); 
 				}		
 			});
-
 		}
 
 		this.signIn = function(details){
@@ -116,15 +106,13 @@
 						window.location.reload(false); 		
 					} else {
 						$scope.PassWrong = true;
-					}		
-						
+					}					
 				}
 			})
 		}
 
 		this.logOut = function(details){
 			Parse.User.logOut();
- 
 			var currentUser = Parse.User.current();
 			window.location.reload(false); 
 		}
