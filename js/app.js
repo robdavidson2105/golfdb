@@ -38,7 +38,12 @@
 			courseInfos.set("MapsLink", currentCourse.geoLink);
 			courseInfos.set("Author", $scope.Username);
 			var hole = [];
-			courseInfos.set("Holes", empty);
+			for (var i = 0; i < 18; i++) { 
+				hole[i] = {HoleIndex: i, Par: 4, Lat: 0, Long: 0, StrokeIndex: 0};
+				currentCourse.holes[i] = hole[i];
+			};
+			
+			courseInfos.set("Holes", currentCourse.holes);
 			courseInfos.save(null, {
 				success: function (obj) {
             		window.location.reload(false); 
@@ -58,8 +63,8 @@
 					CourseU.set("MapsLink", currentCourse.geoLink);
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
-						//hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
-						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], StrokeIndex: currentCourse.strokeIndex[i]};
+						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
+						//hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], StrokeIndex: currentCourse.strokeIndex[i]};
 						currentCourse.holes[i] = hole[i];
 					};
 					CourseU.set("Holes", currentCourse.holes);
