@@ -124,8 +124,8 @@
 			window.location.reload(false); 
 		}
 		
-		this.showMap = function() {
-			console.log("Test");
+		this.showMap = function(i) {
+			console.log("Test " + i);
 		}
 
 	});
