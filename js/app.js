@@ -21,7 +21,7 @@
     			$scope.$apply(function(){
     				for (var i = 0; i < results.length; i++) { 
       					var object = results[i];
-      					courseEntries.push({strokeIndex: object.get('Strokes'), holes: object.get('Holes'), holeGeoLongs: object.get('Longitudes'), holeGeoLats: object.get('Latitudes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), pars: object.get('Pars'), id: object.id});
+      					courseEntries.push({holes: object.get('Holes'), holeGeoLongs: object.get('Longitudes'), holeGeoLats: object.get('Latitudes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id});
     				}	
     				$scope.courseDatabases = courseEntries;
     			})
@@ -38,10 +38,8 @@
 			courseInfos.set("Name", currentCourse.name);
 			courseInfos.set("Address", currentCourse.location);
 			courseInfos.set("MapsLink", currentCourse.geoLink);
-			courseInfos.set("Pars", empty);
 			courseInfos.set("Longitudes", empty);
 			courseInfos.set("Latitudes", empty);
-			courseInfos.set("Strokes", empty);
 			courseInfos.set("Author", $scope.Username);
 			var hole = [];
 			courseInfos.set("Holes", empty);
@@ -62,10 +60,8 @@
 					CourseU.set("Name", currentCourse.name);
 					CourseU.set("Address", currentCourse.location);
 					CourseU.set("MapsLink", currentCourse.geoLink);
-					CourseU.set("Pars", currentCourse.pars);
 					CourseU.set("Longitudes", currentCourse.holeGeoLongs);
 					CourseU.set("Latitudes", currentCourse.holeGeoLats);
-					CourseU.set("Strokes", currentCourse.strokeIndex);
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
 						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
