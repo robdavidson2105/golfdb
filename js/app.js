@@ -124,6 +124,9 @@
 			window.location.reload(false); 
 		}
 		
+		this.showMap = function() {
+			console.log("Test");
+		}
 
 	});
 
