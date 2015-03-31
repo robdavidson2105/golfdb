@@ -37,6 +37,7 @@
 			courseInfos.set("Address", currentCourse.location);
 			courseInfos.set("MapsLink", currentCourse.geoLink);
 			courseInfos.set("Author", $scope.Username);
+			currentCourse.holes =[];
 			var hole = [];
 			for (var i = 0; i < 18; i++) { 
 				hole[i] = {HoleIndex: i, Par: 4, Lat: 0, Long: 0, StrokeIndex: 0};
