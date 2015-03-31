@@ -63,19 +63,19 @@
 						{{courseDatabase.holes[i-1].Par}}
 					</td>
 					<td ng-show="clicked===true" align="center">
-						<input style="text-align: center" maxlength="1" size="3" ng-model="courseDatabase.pars[i-1]" placeholder="Par"/>
+						<input style="text-align: center" maxlength="1" size="3" ng-model="courseDatabase.holes[i-1].Par" placeholder="Par"/>
 					</td>
 					<td ng-show="clicked!==true" align="center">
-						{{courseDatabase.strokeIndex[i-1]}}
+						{{courseDatabase.holes[i-1].StrokeIndex}}
 					</td>
 					<td ng-show="clicked===true" align="center">
-						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.strokeIndex[i-1]" placeholder="SI"/>
+						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.holes[i-1].StrokeIndex" placeholder="SI"/>
 					</td>
 					<td align="center">
-						{{courseDatabase.holeGeoLats[i-1]}}
+						{{courseDatabase.holes[i-1].Lat}}
 					</td>
 					<td align="center">
-						{{courseDatabase.holeGeoLongs[i-1]}}
+						{{courseDatabase.holes[i-1].Long}}
 					</td>
 				</tr>
 			</table>
