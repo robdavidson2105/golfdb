@@ -58,7 +58,8 @@
 					CourseU.set("MapsLink", currentCourse.geoLink);
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
-						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
+						//hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], Lat: currentCourse.holeGeoLats[i], Long: currentCourse.holeGeoLongs[i], StrokeIndex: currentCourse.strokeIndex[i]};
+						hole[i] = {HoleIndex: i, Par: currentCourse.pars[i], StrokeIndex: currentCourse.strokeIndex[i]};
 						currentCourse.holes[i] = hole[i];
 					};
 					CourseU.set("Holes", currentCourse.holes);
