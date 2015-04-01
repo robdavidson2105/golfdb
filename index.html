@@ -91,11 +91,17 @@
 					<td ng-show="clicked===true" align="center">
 						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.holes[i-1].StrokeIndex" placeholder="SI"/>
 					</td>
-					<td align="center">
+					<td align="center" ng-show="clicked!==true">
 						{{courseDatabase.holes[i-1].Lat}}
 					</td>
-					<td align="center">
+					<td ng-show="clicked===true" align="center">
+						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Lat" placeholder="0.000000"/>
+					</td>
+					<td align="center" ng-show="clicked!==true">
 						{{courseDatabase.holes[i-1].Long}}
+					</td>
+					<td ng-show="clicked===true" align="center">
+						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
 				</tr>
 				
