@@ -125,7 +125,7 @@
 			window.location.reload(false); 
 		}
 		
-		this.showMap = function(i) {
+		this.showMap = function() {
 			console.log("Test " + i);
 			selectedHole = i;
 			$scope.showMapForHolex[i] = true;
