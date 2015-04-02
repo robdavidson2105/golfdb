@@ -131,6 +131,7 @@
 		}
 		
 		this.showMapForHole = function(i) {
+			console.log(i);
 			if (i === selectedHole) {
 				return true;
 			}
