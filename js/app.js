@@ -127,8 +127,8 @@
 		
 		this.showMap = function() {
 			console.log("Test " + i);
-			selectedHole = i;
-			$scope.showMapForHolex[i] = true;
+			//selectedHole = i;
+			//$scope.showMapForHolex[i] = true;
 		}
 		
 
