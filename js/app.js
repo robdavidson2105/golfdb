@@ -128,15 +128,9 @@
 		this.showMap = function(i) {
 			console.log("Test " + i);
 			selectedHole = i;
+			this.showMapForHole[i] = true;
 		}
 		
-		this.showMapForHole = function(i) {
-			console.log(i);
-			if (i === selectedHole) {
-				return true;
-			}
-			return false;
-		}
 
 	});
 
