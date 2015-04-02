@@ -128,7 +128,7 @@
 		this.showMap = function(i) {
 			console.log("Test " + i);
 			selectedHole = i;
-			this.showMapForHole[i] = true;
+			$scope.showMapForHole[i] = true;
 		}
 		
 
