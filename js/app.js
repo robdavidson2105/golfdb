@@ -1,6 +1,7 @@
 (function(){
 
 	var app = angular.module('courses', []);
+	var selectedHole = 0
 
 	app.controller('courseController', function($scope){
 		var currentUser = Parse.User.current();
@@ -126,6 +127,14 @@
 		
 		this.showMap = function(i) {
 			console.log("Test " + i);
+			selectedHole = i;
+		}
+		
+		this.showMapForHole = function(i) {
+			if (i = selectedHole) {
+				return true;
+			}
+			return false;
 		}
 
 	});
