@@ -143,6 +143,8 @@
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
+				google.maps.event.trigger($scope.maps[i], 'resize');
+				$scope.maps[i].setZoom( $scope.maps[i].getZoom() );
 			}
 		}
 		
