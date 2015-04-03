@@ -74,8 +74,8 @@
 							HoleIndex: i, 
 							Par: currentCourse.holes[i].Par, 
 							StrokeIndex: currentCourse.holes[i].StrokeIndex, 
-							Lat: currentCourse.holes[i].Lat, 
-							Long: currentCourse.holes[i].Long
+							Lat: Number(currentCourse.holes[i].Lat), 
+							Long: Number(currentCourse.holes[i].Long)
 						};
 						currentCourse.holes[i] = hole[i];
 					};
