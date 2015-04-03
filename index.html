@@ -62,6 +62,7 @@
 					<th style="text-align: center">Stroke Index</th>
 					<th style="text-align: center">Latitude</th>
 					<th style="text-align: center">Longitude</th>
+					<th style="text-align: center" ng-show="clicked===true">Map</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
 					<td align="center" ng-show="clicked!==true">
@@ -94,7 +95,7 @@
 					<td ng-show="clicked===true" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
-					<td ng-show="true">
+					<td ng-show="clicked===true" align="center">
 						<div id="googleMap{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
 				</tr>
