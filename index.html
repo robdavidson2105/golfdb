@@ -12,10 +12,6 @@
         </script>
 		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
-
-		<script>
-		//google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
     </head>
     <body ng-controller="courseController as courseCtrl">
     <h1 init="addingCourse = false">Golf Course Database</h1>
@@ -96,7 +92,7 @@
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
 					<td ng-show="clicked===true" align="center">
-						<div id="googleMap{{$index}}" style="width:500px;height:380px;"></div>
+						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
 				</tr>
 				

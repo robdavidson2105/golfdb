@@ -129,13 +129,6 @@
 		}
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
-			//$scope.$parent.test.showMap = false;
-			//$scope.selectedCourse = currentCourse;
-			//console.log("Here");
-			//console.log("Lat " + currentCourse.holes[i].Lat + ", Lon " + lon);
-			//$scope.test.showMap[i] = !$scope.test.showMap[i];
-			//$scope.clicked = false;
-			//selectedHole = i;
 			var zoomLevel = 20;
 			if (lat == 0 || lon ==0)
 			{
@@ -151,12 +144,10 @@
 						lon = currentCourse.holes[i-1].Long;
 						zoomLevel = 17;
 					}
-				}
-				
+				}	
 			}
 			var myCenter=new google.maps.LatLng(lat,lon);
-			//
-			
+
 			var mapProp = {
 				center: myCenter,
 				zoom: zoomLevel,
@@ -164,7 +155,7 @@
 			};
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
-				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
+				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				google.maps.event.addListener($scope.maps[i],'click',function(e) {
 					$scope.$apply(function(){
 						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
@@ -173,10 +164,6 @@
 				});
 
 			}
-		}
-		
-
+		}	
 	});
-
-    
 })();
