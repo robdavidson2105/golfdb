@@ -13,9 +13,9 @@
 		}
 		this.Details = [];
 		var courseEntries = [];
-		$scope.maps = {};
-		$scope.selectedCourse = {};
-		$scope.test = {showMap: [true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
+		//$scope.maps = {};
+		//$scope.selectedCourse = {};
+		//$scope.test = {showMap: [true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
     	this.courseDatabases = courseEntries;
     	var GetCourses = Parse.Object.extend("Course");
     	var getCourses = new Parse.Query(GetCourses);
@@ -25,7 +25,7 @@
     			$scope.$apply(function(){
     				for (var i = 0; i < results.length; i++) { 
       					var object = results[i];
-      					courseEntries.push({holes: object.get('Holes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id});
+      					courseEntries.push({holes: object.get('Holes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id, maps:{} });
     				}	
     				$scope.courseDatabases = courseEntries;
     			})
@@ -130,7 +130,7 @@
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			var zoomLevel = 20;
-			if (lat == 0 || lon ==0)
+			if (lat == 0 || lon == 0)
 			{
 				// if there's not coordinates saved yet - then let's see if there's any from the previous hole
 				// but only if this is hole 2 or above
@@ -153,10 +153,11 @@
 				zoom: zoomLevel,
 				mapTypeId: google.maps.MapTypeId.SATELLITE
 			};
-			if ($scope.maps[i]===undefined) {
+			//if ($scope.maps[i]===undefined) {
+			if (currentCourse.maps[i]===undefined) {	
 				console.log("map object" + $scope.maps[i]);
-				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
-				google.maps.event.addListener($scope.maps[i],'click',function(e) {
+				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
+				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
 					$scope.$apply(function(){
 						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
