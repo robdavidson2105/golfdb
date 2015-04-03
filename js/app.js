@@ -141,7 +141,7 @@
 			
 			var mapProp = {
 				center: myCenter,
-				zoom:5,
+				zoom:14,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			if ($scope.maps[i]===undefined) {
