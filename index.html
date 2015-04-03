@@ -41,15 +41,15 @@
             </form>
         </div>
 	
-        <div init="clicked = false, showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
+        <div init="isEditing = false, showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
             <h2>
                 <h3>{{courseDatabase.name}}</h3>
                 <a href ng-show="showHoles !== true" ng-click="showHoles = true" class="myButton">Show Holes</a>
-                <a href ng-show="showHoles === true" ng-click="showHoles = false; clicked = false; editMaps = false" class="myButton2">Hide Holes</a>                  
-            	<a href ng-show="(courseDatabase.author === Username) && (clicked !==true)" ng-click="clicked = true; showHoles = true; editMaps = false" class="myButton">Edit</a>
-				<a href ng-show="clicked ===true" ng-click="clicked = true; showHoles = true; editMaps = true" class="myButton">Edit Maps</a>
-				<a href ng-show="clicked === true" ng-click="clicked = false; showHoles = false; editMaps = false" class="myButton2">Cancel</a>
-                <a href ng-click="deleting = true" ng-show="clicked === true" class="myButton2">Delete</a>
+                <a href ng-show="showHoles === true" ng-click="showHoles = false; isEditing = false; editMaps = false" class="myButton2">Hide Holes</a>                  
+            	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; editMaps = false" class="myButton">Edit</a>
+				<a href ng-show="isEditing && !editMaps" ng-click="isEditing = true; showHoles = true; editMaps = true" class="myButton">Edit Maps</a>
+				<a href ng-show="isEditing" ng-click="clicked = false; showHoles = false; editMaps = false" class="myButton2">Cancel</a>
+                <a href ng-click="deleting = true" ng-show="isEditing" class="myButton2">Delete</a>
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting === true" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
@@ -57,8 +57,8 @@
             <hr>
             <div>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
-                    <input ng-model="courseDatabase.name" ng-show="clicked === true" placeholder="Name" required></input>
-                    <input type="submit" value="Save" ng-show="clicked === true" ng-click="clicked = false" class="myButton2"></input>
+                    <input ng-model="courseDatabase.name" ng-show="isEditing" placeholder="Name" required></input>
+                    <input type="submit" value="Save" ng-show="isEditing" ng-click="clicked = false" class="myButton2"></input>
                 </form>
             </div>
 			
@@ -76,34 +76,34 @@
 					<td align="center" ng-show="!editMaps">
 						{{i}}
 					</td>
-					<td align="center" ng-show="editMaps===true" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
+					<td align="center" ng-show="editMaps" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
 						<a href ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)" class="myButton">Edit Hole {{i}} Map</a>
 					</td>
-					<td ng-show="clicked!==true" align="center">
+					<td ng-show="!isEditing" align="center">
 						{{courseDatabase.holes[i-1].Par}}
 					</td>
-					<td ng-show="clicked===true" align="center">
+					<td ng-show="isEditing" align="center">
 						<input style="text-align: center" maxlength="1" size="3" ng-model="courseDatabase.holes[i-1].Par" placeholder="Par"/>
 					</td>
-					<td ng-show="clicked!==true" align="center">
+					<td ng-show="!isEditing" align="center">
 						{{courseDatabase.holes[i-1].StrokeIndex}}
 					</td>
-					<td ng-show="clicked===true" align="center">
+					<td ng-show="isEditing" align="center">
 						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.holes[i-1].StrokeIndex" placeholder="SI"/>
 					</td>
-					<td align="center" ng-show="editMaps!==true">
+					<td align="center" ng-show="!editMaps">
 						{{courseDatabase.holes[i-1].Lat}}
 					</td>
-					<td ng-show="editMaps===true" align="center">
+					<td ng-show="editMaps" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Lat" placeholder="0.000000"/>
 					</td>
-					<td align="center" ng-show="editMaps!==true">
+					<td align="center" ng-show="!editMaps">
 						{{courseDatabase.holes[i-1].Long}}
 					</td>
-					<td ng-show="editMaps===true" align="center">
+					<td ng-show="editMaps" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
-					<td ng-show="editMaps===true" align="center">
+					<td ng-show="editMaps" align="center">
 						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
 				</tr>
