@@ -64,8 +64,11 @@
 					<th style="text-align: center">Longitude</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
-					<td align="center" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
+					<td align="center" ng-show="clicked!==true">
 						{{i}}
+					</td>
+					<td align="center" ng-show="clicked===true" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
+						<a href ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)" class="myButton">Edit Hole {{i}} Map</a>
 					</td>
 					<td ng-show="clicked!==true" align="center">
 						{{courseDatabase.holes[i-1].Par}}
