@@ -136,14 +136,14 @@
 			//$scope.clicked = false;
 			//selectedHole = i;
 			var myCenter=new google.maps.LatLng(lat,lon);
+			//center: myCenter,
 			var mapProp = {
-			center: myCenter,
 			zoom:5,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
-				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
+				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
 
 			}
 		}
