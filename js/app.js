@@ -131,7 +131,7 @@
 			console.log("Test " + i);
 			//$scope.clicked = false;
 			//selectedHole = i;
-			$scope.test.showMap = true;
+			$scope.test.showMap = false;
 			
 			$scope.showThisHole = i;
 			$scope.showMapForHole[i] = true;
