@@ -149,8 +149,8 @@
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
 				google.maps.event.addListener($scope.maps[i],'click',function(e) {
 					$scope.$apply(function(){
-						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000)/1000000;
-						currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000)/1000000;
+						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
+						currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
 					});
 				});
 
