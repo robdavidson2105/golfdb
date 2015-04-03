@@ -149,7 +149,7 @@
 				google.maps.event.addListener($scope.maps[i],'click',function(e, currentCourse) {
 					$scope.$apply(function(currentCourse,i){
 						alert("here" + e.latLng.toString());
-						alert("lats " + currentCourse.holes[i].Lat);
+						alert("lats " + i);
 						
 						currentCourse.holes[i].Lat = 5;
 					});
