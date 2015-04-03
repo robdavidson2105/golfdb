@@ -147,7 +147,7 @@
 				console.log("map object" + $scope.maps[i]);
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
 				google.maps.event.addListener($scope.maps[i],'click',function(e) {
-					$scope.$apply(function(currentCourse){
+					$scope.$apply(function(currentCourse,i){
 						alert("here" + e.latLng.toString());
 						currentCourse.holes[i-1].Lat = e.latLng.lat;
 					});
