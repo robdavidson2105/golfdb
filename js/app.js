@@ -137,6 +137,7 @@
 			//selectedHole = i;
 			var myCenter=new google.maps.LatLng(lat,lon);
 			//center: myCenter,
+			
 			var mapProp = {
 			zoom:5,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
