@@ -159,7 +159,7 @@
 			
 			var mapProp = {
 				center: myCenter,
-				zoom:20,
+				zoom: zoomLevel,
 				mapTypeId: google.maps.MapTypeId.SATELLITE
 			};
 			if ($scope.maps[i]===undefined) {
