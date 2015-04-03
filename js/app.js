@@ -128,13 +128,13 @@
 			window.location.reload(false); 
 		}
 		
-		this.showMap = function(i) {
+		this.showMap = function(i, lat, lon) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
 			//$scope.test.showMap[i] = !$scope.test.showMap[i];
 			//$scope.clicked = false;
 			//selectedHole = i;
-			var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+			var myCenter=new google.maps.LatLng(lat,lon);
 			var mapProp = {
 			center: myCenter,
 			zoom:5,
