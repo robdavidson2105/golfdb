@@ -133,7 +133,7 @@
 			//selectedHole = i;
 			$scope.$apply(function(){
 				$scope.test.showMap = false;
-			}
+			});
 			
 			$scope.showThisHole = i;
 			$scope.showMapForHole[i] = true;
