@@ -132,8 +132,6 @@
 			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
 			$scope.test.showMap[i] = !$scope.test.showMap[i];
-			
-			console.log("showmap " + $scope.test.showMap[i]);
 			//$scope.clicked = false;
 			//selectedHole = i;
 			var myCenter=new google.maps.LatLng(51.508742,-0.120850);
@@ -142,8 +140,10 @@
 			zoom:5,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
+			console.log("map object" + $scope.maps[i]);
 			
 			$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
+			console.log("map object" + $scope.maps[i]);
 		}
 		
 
