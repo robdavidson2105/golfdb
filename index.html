@@ -12,6 +12,15 @@
         </script>
 		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script>
+			var drawMarker = function(map, lat, lon) {
+							var marker = new google.maps.Marker({
+			  						position: {lat: lat, lng: lon},
+			  						map: map,
+			  						title: 'Hole '
+		  						});
+							}
+		</script>
     </head>
     <body ng-controller="courseController as courseCtrl">
     <h1 init="addingCourse = false">Golf Course Database</h1>

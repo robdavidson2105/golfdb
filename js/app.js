@@ -128,13 +128,6 @@
 			window.location.reload(false); 
 		}
 		
-		this.drawMarker = function(map, lat, lon) {
-			var marker = new google.maps.Marker({
-			  				position: {lat: lat, lng: lon},
-			  				map: map,
-			  				title: 'Hole '
-		  				});
-		}
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			var zoomLevel = 20;
@@ -168,7 +161,7 @@
 				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				if (drawPin) {
-					this.drawMarker(currentCourse.maps[i], lat, lon);
+					drawMarker(currentCourse.maps[i], lat, lon);
 					/*
 					var marker = new google.maps.Marker({
       				  				position: {lat: lat, lng: lon},
@@ -180,7 +173,7 @@
 					$scope.$apply(function(){
 						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						this.drawMarker(currentCourse.maps[i], currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
+						drawMarker(currentCourse.maps[i], currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
 
