@@ -1,5 +1,7 @@
 body {
     background-color: lightgreen;
+	margin: 2;
+	padding: 2;
 }
 h1 {
     color: darkgreen;
