@@ -130,12 +130,30 @@
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			//$scope.$parent.test.showMap = false;
-			$scope.selectedCourse = currentCourse;
-			console.log("Here");
-			console.log("Lat " + currentCourse.holes[i].Lat + ", Lon " + lon);
+			//$scope.selectedCourse = currentCourse;
+			//console.log("Here");
+			//console.log("Lat " + currentCourse.holes[i].Lat + ", Lon " + lon);
 			//$scope.test.showMap[i] = !$scope.test.showMap[i];
 			//$scope.clicked = false;
 			//selectedHole = i;
+			var zoomLevel = 20;
+			if (lat == 0 || lon ==0)
+			{
+				// if there's not coordinates saved yet - then let's see if there's any from the previous hole
+				// but only if this is hole 2 or above
+				lat = 54;
+				lon = -2;
+				zoomLevel = 5;
+				
+				if (i != 0) {
+					if (currentCourse.holes[i-1].Lat != 0 && currentCourse.holes[i-1].Long != 0) {
+						lat = currentCourse.holes[i-1].Lat;
+						lon = currentCourse.holes[i-1].Long;
+						zoomLevel = 10;
+					}
+				}
+				
+			}
 			var myCenter=new google.maps.LatLng(lat,lon);
 			//
 			
