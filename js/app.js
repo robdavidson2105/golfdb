@@ -15,7 +15,7 @@
 		var courseEntries = [];
 		$scope.maps = {};
 		$scope.showMapForHole = [];
-		$scope.test = {showMap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
+		$scope.test = {showMap: [true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
     	this.courseDatabases = courseEntries;
     	var GetCourses = Parse.Object.extend("Course");
     	var getCourses = new Parse.Query(GetCourses);
@@ -131,7 +131,7 @@
 		this.showMap = function(i) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
-			$scope.test.showMap[i] = !$scope.test.showMap[i];
+			//$scope.test.showMap[i] = !$scope.test.showMap[i];
 			//$scope.clicked = false;
 			//selectedHole = i;
 			var myCenter=new google.maps.LatLng(51.508742,-0.120850);
@@ -143,8 +143,7 @@
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
-				google.maps.event.trigger($scope.maps[i], 'resize');
-				$scope.maps[i].setZoom( $scope.maps[i].getZoom() );
+
 			}
 		}
 		
