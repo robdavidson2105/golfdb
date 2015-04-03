@@ -143,13 +143,13 @@
 				// but only if this is hole 2 or above
 				lat = 54;
 				lon = -2;
-				zoomLevel = 5;
+				zoomLevel = 15;
 				
 				if (i != 0) {
 					if (currentCourse.holes[i-1].Lat != 0 && currentCourse.holes[i-1].Long != 0) {
 						lat = currentCourse.holes[i-1].Lat;
 						lon = currentCourse.holes[i-1].Long;
-						zoomLevel = 10;
+						zoomLevel = 15;
 					}
 				}
 				
