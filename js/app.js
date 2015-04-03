@@ -168,7 +168,7 @@
 				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				if (drawPin) {
-					courseController.drawMarker(currentCourse.maps[i], lat, lon);
+					this.drawMarker(currentCourse.maps[i], lat, lon);
 					/*
 					var marker = new google.maps.Marker({
       				  				position: {lat: lat, lng: lon},
