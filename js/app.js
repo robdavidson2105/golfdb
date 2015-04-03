@@ -13,6 +13,7 @@
 		}
 		this.Details = [];
 		var courseEntries = [];
+		$scope.maps = {};
 		$scope.showMapForHole = [];
 		$scope.test = {showMap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
     	this.courseDatabases = courseEntries;
@@ -141,7 +142,8 @@
 			zoom:5,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			
+			$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
 		}
 		
 
