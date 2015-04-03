@@ -128,7 +128,7 @@
 			window.location.reload(false); 
 		}
 		
-		this.showMap = function(i, lat, lon) {
+		this.showMap = function(i, currentCourse, lat, lon) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Here");
 			console.log("Lat " + lat + ", Lon " + lon);
@@ -149,6 +149,7 @@
 				google.maps.event.addListener($scope.maps[i],'click',function(e) {
 					$scope.$apply(function(){
 						alert("here" + e.latLng.toString());
+						currentCourse.holes[i-1].Lat = e.latLng.lat;
 					});
 				});
 
