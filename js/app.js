@@ -128,8 +128,9 @@
 		}
 		
 		this.showMap = function(i) {
-			$scope.$parent.test.showMap = false;
+			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
+			console.log("showmap " + $scope.test.showMap)
 			//$scope.clicked = false;
 			//selectedHole = i;
 			
