@@ -14,7 +14,6 @@
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
 			var drawMarker = function(currentCourse, i, lat, lon) {	
-				console.log("marker" + currentCourse.markers[i]);
 				if (currentCourse.markers[i] != undefined) {
 					currentCourse.markers[i].setMap(null);
 					currentCourse.markers[i] = null;
@@ -41,7 +40,7 @@
             </form>
         </div>
 	
-        <div init="isEditing = false, showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
+        <div ng-init="isEditing = false, showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
             <h2>
                 <h3>{{courseDatabase.name}}</h3>
                 <a href ng-show="showHoles !== true" ng-click="showHoles = true" class="myButton">Show Holes</a>
