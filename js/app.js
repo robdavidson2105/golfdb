@@ -128,6 +128,14 @@
 			window.location.reload(false); 
 		}
 		
+		this.drawMarker = function(map, lat, lon) {
+			var marker = new google.maps.Marker({
+			  				position: {lat: lat, lng: lon},
+			  				map: map,
+			  				title: 'Hole '
+		  				});
+		}
+		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			var zoomLevel = 20;
 			var drawPin = true;
@@ -160,11 +168,13 @@
 				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				if (drawPin) {
+					drawMarker(currentCourse.maps[i], lat, lon);
+					/*
 					var marker = new google.maps.Marker({
       				  				position: {lat: lat, lng: lon},
       				  				map: currentCourse.maps[i],
       				  				title: 'Hole ' + i
-  				  				});
+  				  				});  */
 				}
 				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
 					$scope.$apply(function(){
