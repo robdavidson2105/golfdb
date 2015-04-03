@@ -31,7 +31,7 @@
 											location: object.get('Address'), 
 											geoLink: object.get('MapsLink'), 
 											id: object.id, 
-											maps:{},
+											maps: {},
 											markers: {}
 										});
     				}	
@@ -169,7 +169,7 @@
 				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				if (drawPin) {
-					drawMarker(currentCourse.maps[i], lat, lon);
+					drawMarker(currentCourse, i, lat, lon);
 					/*
 					var marker = new google.maps.Marker({
       				  				position: {lat: lat, lng: lon},
