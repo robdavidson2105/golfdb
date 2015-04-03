@@ -131,7 +131,7 @@
 		this.showMap = function(i, currentCourse, lat, lon) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Here");
-			console.log("Lat " + lat + ", Lon " + lon);
+			console.log("Lat " + currentCourse.holes[i].Lat + ", Lon " + lon);
 			//$scope.test.showMap[i] = !$scope.test.showMap[i];
 			//$scope.clicked = false;
 			//selectedHole = i;
