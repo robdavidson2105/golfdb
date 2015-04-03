@@ -14,7 +14,7 @@
 		this.Details = [];
 		var courseEntries = [];
 		$scope.showMapForHole = [];
-		$scope.test = {showMap: false}
+		$scope.test = {showMap: false};
     	this.courseDatabases = courseEntries;
     	var GetCourses = Parse.Object.extend("Course");
     	var getCourses = new Parse.Query(GetCourses);
