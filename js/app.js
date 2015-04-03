@@ -130,6 +130,7 @@
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			var zoomLevel = 20;
+			var drawPin = true;
 			if (lat == 0 || lon == 0)
 			{
 				// if there's not coordinates saved yet - then let's see if there's any from the previous hole
@@ -137,6 +138,7 @@
 				lat = 54;
 				lon = -2;
 				zoomLevel = 5;
+				drawPin = false;
 				
 				if (i != 0) {
 					if (currentCourse.holes[i-1].Lat != 0 && currentCourse.holes[i-1].Long != 0) {
@@ -153,10 +155,17 @@
 				zoom: zoomLevel,
 				mapTypeId: google.maps.MapTypeId.SATELLITE
 			};
-			//if ($scope.maps[i]===undefined) {
+
 			if (currentCourse.maps[i]===undefined) {	
 				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
+				if (drawPin) {
+					var marker = new google.maps.Marker({
+      				  				position: {lat: lat, lng: lon},
+      				  				map: currentCourse.maps[i],
+      				  				title: 'Hole ' + i
+  				  				});
+				}
 				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
 					$scope.$apply(function(){
 						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
