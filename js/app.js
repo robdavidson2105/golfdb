@@ -181,7 +181,7 @@
 					$scope.$apply(function(){
 						currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						drawMarker(currentCourse.maps[i], currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
+						drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
 
