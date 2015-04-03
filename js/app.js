@@ -149,7 +149,7 @@
 				google.maps.event.addListener($scope.maps[i],'click',function(e) {
 					$scope.$apply(function(currentCourse,i){
 						alert("here" + e.latLng.toString());
-						currentCourse.holes[i-1].Lat = e.latLng.lat;
+						currentCourse.holes[i-1].Lat = 5;
 					});
 				});
 
