@@ -73,10 +73,10 @@
 					<th style="text-align: center" ng-show="editMaps===true">Map</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
-					<td align="center" ng-show="clicked!==true">
+					<td align="center" ng-show="editMaps!==true">
 						{{i}}
 					</td>
-					<td align="center" ng-show="clicked===true" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
+					<td align="center" ng-show="editMaps===true" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
 						<a href ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)" class="myButton">Edit Hole {{i}} Map</a>
 					</td>
 					<td ng-show="clicked!==true" align="center">
@@ -91,16 +91,16 @@
 					<td ng-show="clicked===true" align="center">
 						<input style="text-align: center" maxlength="2" size="2" ng-model="courseDatabase.holes[i-1].StrokeIndex" placeholder="SI"/>
 					</td>
-					<td align="center" ng-show="clicked!==true">
+					<td align="center" ng-show="editMaps!==true">
 						{{courseDatabase.holes[i-1].Lat}}
 					</td>
-					<td ng-show="clicked===true" align="center">
+					<td ng-show="editMaps===true" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Lat" placeholder="0.000000"/>
 					</td>
-					<td align="center" ng-show="clicked!==true">
+					<td align="center" ng-show="editMaps!==true">
 						{{courseDatabase.holes[i-1].Long}}
 					</td>
-					<td ng-show="clicked===true" align="center">
+					<td ng-show="editMaps===true" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
 					<td ng-show="editMaps===true" align="center">
