@@ -142,11 +142,8 @@
 			};
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
+				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
 			}
-			
-			
-			$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i),mapProp);
-			console.log("map object" + $scope.maps[i]);
 		}
 		
 
