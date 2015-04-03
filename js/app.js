@@ -146,6 +146,9 @@
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
+				google.maps.event.addListener($scope.maps[i],'click',function(e) {
+				alert("here" + e.latLng.toString());
+				});
 
 			}
 		}
