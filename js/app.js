@@ -25,7 +25,15 @@
     			$scope.$apply(function(){
     				for (var i = 0; i < results.length; i++) { 
       					var object = results[i];
-      					courseEntries.push({holes: object.get('Holes'), author: object.get('Author'), name: object.get('Name'), location: object.get('Address'), geoLink: object.get('MapsLink'), id: object.id, maps:{} });
+      					courseEntries.push({holes: object.get('Holes'), 
+											author: object.get('Author'), 
+											name: object.get('Name'), 
+											location: object.get('Address'), 
+											geoLink: object.get('MapsLink'), 
+											id: object.id, 
+											maps:{},
+											markers: {}
+										});
     				}	
     				$scope.courseDatabases = courseEntries;
     			})

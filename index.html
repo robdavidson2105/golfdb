@@ -13,10 +13,11 @@
 		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
-			var drawMarker = function(map, lat, lon) {
-							var marker = new google.maps.Marker({
+			var drawMarker = function(currentCourse, i, lat, lon) {
+								console.log("marker" + currentCourse.markers[i]);
+							 	currentCourse.markers[i] = new google.maps.Marker({
 			  						position: {lat: lat, lng: lon},
-			  						map: map,
+			  						map: currentCourse.maps[i],
 			  						title: 'Hole '
 		  						});
 							}
