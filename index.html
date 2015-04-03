@@ -45,15 +45,14 @@
             <h2>
                 <h3>{{courseDatabase.name}}</h3>
                 <a href ng-show="showHoles !== true" ng-click="showHoles = true" class="myButton">Show Holes</a>
-                <a href ng-show="showHoles === true" ng-click="showHoles = false; clicked = false" class="myButton2">Hide Holes</a>
+                <a href ng-show="showHoles === true" ng-click="showHoles = false; clicked = false" class="myButton2">Hide Holes</a>                  
+            	<a href ng-show="(courseDatabase.author === Username) && (clicked !==true)" ng-click="clicked = true; showHoles = true" class="myButton">Edit</a>
+				<a href ng-show="clicked === true" ng-click="clicked = false; showHoles = false" class="myButton2">Cancel</a>
                 <a href ng-click="deleting = true" ng-show="clicked === true" class="myButton2">Delete</a>
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting === true" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
-            </h2>
-            <a href={{courseDatabase.geoLink}}>{{courseDatabase.location}}</a>
-            <a href ng-show="(courseDatabase.author === Username) && (clicked !==true)" ng-click="clicked = true; showHoles = true" class="myButton">Edit</a>
-            <a href ng-show="clicked === true" ng-click="clicked = false; showHoles = false" class="myButton2">Cancel</a>
+			</h2>
             <hr>
             <div>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
