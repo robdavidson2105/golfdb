@@ -14,7 +14,7 @@
 		this.Details = [];
 		var courseEntries = [];
 		$scope.showMapForHole = [];
-		$scope.test = {showMap: true};
+		$scope.test = {showMap: [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]};
     	this.courseDatabases = courseEntries;
     	var GetCourses = Parse.Object.extend("Course");
     	var getCourses = new Parse.Query(GetCourses);
@@ -130,9 +130,9 @@
 		this.showMap = function(i) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
-			$scope.test.showMap = false;
+			$scope.test.showMap[i] = false;
 			
-			console.log("showmap " + $scope.test.showMap)
+			console.log("showmap " + $scope.test.showMap[i]);
 			//$scope.clicked = false;
 			//selectedHole = i;
 			
