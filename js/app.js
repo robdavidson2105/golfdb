@@ -141,8 +141,8 @@
 			
 			var mapProp = {
 				center: myCenter,
-				zoom:15,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+				zoom:20,
+				mapTypeId: google.maps.MapTypeId.SATELLITE
 			};
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
