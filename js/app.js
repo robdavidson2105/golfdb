@@ -130,9 +130,7 @@
 		this.showMap = function(i) {
 			//$scope.$parent.test.showMap = false;
 			console.log("Test " + i);
-			$scope.$apply(function() {
-				test.showMap = false;
-			});
+			$scope.test.showMap = false;
 			
 			console.log("showmap " + $scope.test.showMap)
 			//$scope.clicked = false;
