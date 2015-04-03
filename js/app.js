@@ -155,7 +155,7 @@
 			};
 			//if ($scope.maps[i]===undefined) {
 			if (currentCourse.maps[i]===undefined) {	
-				console.log("map object" + $scope.maps[i]);
+				console.log("map object" + currentCourse.maps[i]);
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
 					$scope.$apply(function(){
