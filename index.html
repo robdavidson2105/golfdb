@@ -114,6 +114,7 @@
         </div>
         <a href ng-click="addingCourse = true" class="myButton" ng-show="SignedIn === true">Add Course</a>
         <a href ng-show="addingCourse === true" ng-click="addingCourse = false" class="myButton2">Cancel</a>
+		<p>
         <form name="AddCourse" ng-submit="courseCtrl.addCourse(addCourseDatabase)" ng-show="SignedIn === true" novalidate>
              <input ng-model="addCourseDatabase.name" ng-show="addingCourse === true" placeholder="Name" required></input>
              <input type="submit" value="Submit" ng-show="addingCourse === true" ng-click="addingCourse = false"></input>
