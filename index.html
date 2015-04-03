@@ -58,8 +58,6 @@
             <div>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
                     <input ng-model="courseDatabase.name" ng-show="clicked === true" placeholder="Name" required></input>
-                    <input ng-model="courseDatabase.location" ng-show="clicked === true" placeholder="Address" required></input>
-                    <input ng-model="courseDatabase.geoLink" ng-show="clicked === true" placeholder="Google Maps Link" required></input>
                     <input type="submit" value="Save" ng-show="clicked === true" ng-click="clicked = false" class="myButton2"></input>
                 </form>
             </div>
@@ -118,8 +116,6 @@
         <a href ng-show="addingCourse === true" ng-click="addingCourse = false" class="myButton2">Cancel</a>
         <form name="AddCourse" ng-submit="courseCtrl.addCourse(addCourseDatabase)" ng-show="SignedIn === true" novalidate>
              <input ng-model="addCourseDatabase.name" ng-show="addingCourse === true" placeholder="Name" required></input>
-             <input ng-model="addCourseDatabase.location" ng-show="addingCourse === true" placeholder="Address" required></input>
-             <input ng-model="addCourseDatabase.geoLink" ng-show="addingCourse === true" placeholder="Google Maps Link" required></input>
              <input type="submit" value="Submit" ng-show="addingCourse === true" ng-click="addingCourse = false"></input>
              <p ng-show="addingCourse === true">You Can Edit Positions, Pars And Stroke Indexes Through The Edit Menu.</p>
         </form>
