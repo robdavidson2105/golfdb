@@ -135,7 +135,13 @@
 			console.log("showmap " + $scope.test.showMap[i]);
 			//$scope.clicked = false;
 			//selectedHole = i;
-			
+			var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+			var mapProp = {
+			center: myCenter,
+			zoom:5,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 		}
 		
 
