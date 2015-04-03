@@ -14,7 +14,7 @@
 		this.Details = [];
 		var courseEntries = [];
 		$scope.maps = {};
-		$scope.showMapForHole = [];
+		$scope.selectedCourse = {};
 		$scope.test = {showMap: [true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]};
     	this.courseDatabases = courseEntries;
     	var GetCourses = Parse.Object.extend("Course");
@@ -130,6 +130,7 @@
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
 			//$scope.$parent.test.showMap = false;
+			$scope.selectedCourse = currentCourse;
 			console.log("Here");
 			console.log("Lat " + currentCourse.holes[i].Lat + ", Lon " + lon);
 			//$scope.test.showMap[i] = !$scope.test.showMap[i];
@@ -146,10 +147,10 @@
 			if ($scope.maps[i]===undefined) {
 				console.log("map object" + $scope.maps[i]);
 				$scope.maps[i] = new google.maps.Map(document.getElementById("googleMap" + i), mapProp);
-				google.maps.event.addListener($scope.maps[i],'click',function(e, currentCourse) {
-					$scope.$apply(function(currentCourse,i){
+				google.maps.event.addListener($scope.maps[i],'click',function(e) {
+					$scope.$apply(function(){
 						alert("here" + e.latLng.toString());
-						alert("lats " + i);
+						alert("lats " + $scope.selectedCourse.holes[0].Lat);
 						
 						currentCourse.holes[i].Lat = 5;
 					});
