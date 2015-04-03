@@ -132,7 +132,7 @@
 		
 		
 		this.showMap = function(i, currentCourse, lat, lon) {
-			var zoomLevel = 20;
+			var zoomLevel = 18;
 			var drawPin = true;
 			if (lat == 0 || lon == 0)
 			{
