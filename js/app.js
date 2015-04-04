@@ -165,8 +165,8 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			var mapCentre = currentCourse.maps[i].getCenter();
 			currentCourse.holes[i].Waypoints.push({
 				Description: "New Waypoint",
-				Lat: mapCentre.lat(),
-				Lon: mapCentre.lng()
+				Lat: Math.round(mapCentre.lat() * 1000000) / 1000000,
+				Lon: Math.round(mapCentre.lng() * 1000000) / 1000000
 			});
 		}
 		
