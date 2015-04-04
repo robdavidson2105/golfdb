@@ -75,8 +75,8 @@
 					<td align="center" ng-show="!editMaps">
 						{{i}}
 					</td>
-					<td align="center" ng-show="editMaps" ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)">
-						<a href ng-click="courseCtrl.showMap($index,courseDatabase,courseDatabase.holes[i-1].Lat, courseDatabase.holes[i-1].Long)" class="myButton">Edit Hole {{i}} Map</a>
+					<td align="center" ng-show="editMaps">
+						<a href ng-click="courseCtrl.showMap($index,courseDatabase)" class="myButton">Edit Hole {{i}} Map</a>
 					</td>
 					<td ng-show="!isEditing" align="center">
 						{{courseDatabase.holes[i-1].Par}}
