@@ -161,15 +161,6 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			window.location.reload(false); 
 		}
 		
-		this.addWaypoint = function(i, currentCourse) {
-			var mapCentre = currentCourse.maps[i].getCenter();
-			currentCourse.holes[i].Waypoints.push({
-				Description: "New Waypoint",
-				Lat: Math.round(mapCentre.lat() * 1000000) / 1000000,
-				Lon: Math.round(mapCentre.lng() * 1000000) / 1000000
-			});
-		}
-		
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
 			var zoomLevel = 17;
@@ -222,6 +213,15 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 				}
 			}
+		}
+		this.addWaypoint = function(i, currentCourse) {
+			showMap(i, currentCourse);
+			var mapCentre = currentCourse.maps[i].getCenter();
+			currentCourse.holes[i].Waypoints.push({
+				Description: "New Waypoint",
+				Lat: Math.round(mapCentre.lat() * 1000000) / 1000000,
+				Lon: Math.round(mapCentre.lng() * 1000000) / 1000000
+			});
 		}	
 	});
 })();
