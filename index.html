@@ -29,7 +29,7 @@
 	
         <div ng-init="isEditing = false; showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
        
-                <h3>{{courseDatabase.name}}
+                <h3>
                 <a href ng-show="showHoles !== true" ng-click="showHoles = true" class="myButton">Show Holes</a>
                 <a href ng-show="showHoles === true" ng-click="showHoles = false; isEditing = false; editMaps = false" class="myButton2">Hide Holes</a>                  
             	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; editMaps = false" class="myButton">Edit</a>
@@ -39,6 +39,7 @@
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting === true" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
+				{{courseDatabase.name}}
 				</h3>
             <div>
 				<p>
@@ -101,13 +102,10 @@
 							<a href ng-click="courseCtrl.addWaypoint($index,courseDatabase)" class="myButton">Add waypoint</a>
 						</div>
 					</td>
-
 					<td ng-show="editMaps" align="center">
 						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
-
 				</tr>
-				
 			</table>
 		</div>
         </form>
@@ -121,4 +119,4 @@
              <p ng-show="addingCourse === true">You Can Edit Positions, Pars And Stroke Indexes Through The Edit Menu.</p>
         </form>
     </body>
-</html></p>
+</html>

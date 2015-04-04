@@ -163,11 +163,9 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
 			var zoomLevel = 17;
-			var drawPin = true;
 			var lat = currentCourse.holes[i].Waypoints[0].Lat;
 			var lon = currentCourse.holes[i].Waypoints[0].Lon;
-			
-			
+	
 			if (lat == 0 || lon == 0)
 			{
 				// if there's not coordinates saved yet - then let's see if there's any from the previous hole
