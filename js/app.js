@@ -129,12 +129,18 @@
 			window.location.reload(false); 
 		}
 		
+		this.test = function() {
+			alert("hello");
+		}
+		
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
 			var zoomLevel = 17;
 			var drawPin = true;
 			var lat = currentCourse.holes[i].Waypoints[0].Lat;
 			var lon = currentCourse.holes[i].Waypoints[0].Lon;
+			
+			$scope.test();
 			
 			
 			if (lat == 0 || lon == 0)
@@ -174,18 +180,13 @@
 				// Drop a marker at the hole location
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 				console.log("number of waypoints " + numberOfWaypoints);
-				if (drawPin) {
-					
-					for (var n = 0; n < numberOfWaypoints; n++ ) {
-						console.log("Here");
+				for (var n = 0; n < numberOfWaypoints; n++ ) {
 						console.log(currentCourse.holes[i].Waypoints[n].Lat);
 						console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						console.log(currentCourse.holes[i].Waypoints[n].Description);
-						drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
-					}
-					
+					drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 				}
-
+				/*
 				// Register a listener for a click event - if the map is clicked then we'll put a marker at that location
 				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
 					$scope.$apply(function(){
@@ -194,7 +195,7 @@
 						drawMarker(currentCourse, i, numberOfWaypoints, e.latLng.lat(), e.latLng.lng());
 						//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
-				});
+				}); */
 			}
 		}	
 	});
