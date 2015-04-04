@@ -1,6 +1,22 @@
-function test() {
-	alert("hello");
-}
+function drawMarker(currentCourse, i, n, lat, lon, description) {	
+	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
+	if (currentCourse.markers[i] != undefined) {
+		console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
+		if (currentCourse.markers[i].waypoints[n] != undefined) {
+			currentCourse.markers[i].waypoints[n].setMap(null);
+			currentCourse.markers[i].waypoints[n] = null;
+		}
+	} else {currentCourse.markers[i] = []; currentCourse.markers[i].waypoints = [];}
+	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
+ 	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
+		position: {lat: Number(lat), lng: Number(lon)},
+  		map: currentCourse.maps[i],
+		draggable: true,
+		title: description
+		});
+		google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 'dragend', function() {alert("Drag end");});
+					
+				}
 
 (function(){
 
@@ -33,7 +49,7 @@ function test() {
 											name: object.get('Name'), 
 											id: object.id, 
 											maps: {},
-											markers: {waypoints: [{}]}
+											markers: [{waypoints: [{}]}]
 										});
     				}	
     				$scope.courseDatabases = courseEntries;
