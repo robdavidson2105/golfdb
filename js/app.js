@@ -17,9 +17,18 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 		title: description
 		});
 	console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
-		google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 'dragend', function() {alert("Drag end");});
+		google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 
+			'dragend', 
+			function(e) {	
+				$scope.$apply(function() {
+					currentCourse.holes[i].Waypoints[n].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
+					currentCourse.holes[i].Waypoints[n].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
+					drawMarker(currentCourse, i, n, e.latLng.lat(), e.latLng.lng());
+					//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
+					});
+				});
 					
-				}
+	}
 
 (function(){
 
