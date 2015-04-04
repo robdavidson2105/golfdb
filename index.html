@@ -24,10 +24,10 @@
 				} else {currentCourse.markers[i] = {};}
 				console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
 			 	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
-			  						position: {lat: lat, lng: lon},
-			  						map: currentCourse.maps[i],
-									draggable: true,
-			  						title: description
+					position: {lat: Number(lat), lng: Number(lon)},
+			  		map: currentCourse.maps[i],
+					draggable: true,
+					title: description
 		  			});
 					google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 'dragend', function() {alert("Drag end");});
 								
