@@ -68,7 +68,7 @@
 			Course.get(currentCourse.id, {
 				success: function (CourseU) {
 					CourseU.set("Name", currentCourse.name);
-					
+					/*
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
 						hole[i] = {
@@ -79,7 +79,7 @@
 							Long: Number(currentCourse.holes[i].Long)
 						};
 						currentCourse.holes[i] = hole[i];
-					}; 
+					};  */ 
 					CourseU.set("Holes", currentCourse.holes);
 					CourseU.save();		
 				}
