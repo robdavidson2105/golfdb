@@ -176,6 +176,9 @@
 					var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 					console.log("number of waypoints " + numberOfWaypoints);
 					for (var n = 0; n < numberOfWaypoints; n++ ) {
+						console.log(currentCourse.holes[i].Waypoints[n].Lat);
+						console.log(currentCourse.holes[i].Waypoints[n].Lon);
+						console.log(currentCourse.holes[i].Waypoints[n].Description);
 						drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 					}
 					
