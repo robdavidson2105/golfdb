@@ -1,3 +1,7 @@
+function test() {
+	alert("hello");
+}
+
 (function(){
 
 	var app = angular.module('courses', []);
@@ -129,9 +133,7 @@
 			window.location.reload(false); 
 		}
 		
-		this.test = function() {
-			alert("hello");
-		}
+
 		
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
@@ -140,7 +142,7 @@
 			var lat = currentCourse.holes[i].Waypoints[0].Lat;
 			var lon = currentCourse.holes[i].Waypoints[0].Lon;
 			
-			$scope.test();
+			test();
 			
 			
 			if (lat == 0 || lon == 0)
