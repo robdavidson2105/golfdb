@@ -1,22 +1,21 @@
 function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, description) {	
-	console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);
-	
+	//console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);	
 	if (currentCourse.markers[holeIndex] != undefined) {
-		console.log("Already got: currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
+		//console.log("Already got: currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
 		if (currentCourse.markers[holeIndex].waypoints[waypointIndex] != undefined) {
 			currentCourse.markers[holeIndex].waypoints[waypointIndex].setMap(null);
 			currentCourse.markers[holeIndex].waypoints[waypointIndex] = null;
 		}
 	} else {currentCourse.markers[holeIndex] = {}; currentCourse.markers[holeIndex].waypoints = {};}
-	console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);
-	console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
+	//console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);
+	//console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
  	currentCourse.markers[holeIndex].waypoints[waypointIndex] = new google.maps.Marker({
 		position: {lat: Number(lat), lng: Number(lon)},
   		map: currentCourse.maps[holeIndex],
 		draggable: true,
 		title: description
 		});
-	console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
+	//console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
 		google.maps.event.addListener(currentCourse.markers[holeIndex].waypoints[waypointIndex], 
 			'dragend', 
 			function(e) {	
