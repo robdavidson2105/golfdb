@@ -173,8 +173,9 @@
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				// Drop a marker at the hole location
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
+				console.log("number of waypoints " + numberOfWaypoints);
 				if (drawPin) {
-					console.log("number of waypoints " + numberOfWaypoints);
+					
 					for (var n = 0; n < numberOfWaypoints; n++ ) {
 						console.log("Here");
 						console.log(currentCourse.holes[i].Waypoints[n].Lat);
@@ -190,7 +191,7 @@
 					$scope.$apply(function(){
 						//currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						//currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						drawMarker(currentCourse, i, numberOfWaypoints++, e.latLng.lat(), e.latLng.lng());
+						drawMarker(currentCourse, i, numberOfWaypoints, e.latLng.lat(), e.latLng.lng());
 						//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
