@@ -214,14 +214,17 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				}
 			}
 		}
-		this.addWaypoint = function(i, currentCourse) {
-			this.showMap(i, currentCourse);
-			var mapCentre = currentCourse.maps[i].getCenter();
-			currentCourse.holes[i].Waypoints.push({
+		this.addWaypoint = function(holeIndex, currentCourse) {
+			this.showMap(holeIndex, currentCourse);
+			var mapCentre = currentCourse.maps[holeIndex].getCenter();
+			var lat = Math.round(mapCentre.lat() * 1000000) / 1000000;
+			var lon = Math.round(mapCentre.lng() * 1000000) / 1000000;
+			currentCourse.holes[holeIndex].Waypoints.push({
 				Description: "New Waypoint",
-				Lat: Math.round(mapCentre.lat() * 1000000) / 1000000,
-				Lon: Math.round(mapCentre.lng() * 1000000) / 1000000
+				Lat: lat,
+				Lon: lon
 			});
+			drawMarker($scope, currentCourse, holeIndex, (currentCourse.holes.Waypoints.length - 1), lat, lon, "New Waypoint");
 		}	
 	});
 })();
