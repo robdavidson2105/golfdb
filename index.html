@@ -97,19 +97,17 @@
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Lat" placeholder="0.000000"/>
 					</td>
 					<td align="center" ng-show="!editMaps">
-						{{courseDatabase.holes[i-1].Long}}
+						<table>
+						<tr>{{courseDatabase.holes[i-1].Long}}</tr>
+						<tr>Test 1</tr>
+						<tr>Test 2</tr>
+						</table>
 					</td>
 					<td ng-show="editMaps" align="center">
 						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
 					</td>
 					<td ng-show="editMaps" align="center">
 						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
-						<tr>
-							<td>Sub Row 1</td>
-						</tr>
-						<tr>
-							<td>Sub Row 2</td>
-						</tr>
 					</td>
 
 				</tr>
