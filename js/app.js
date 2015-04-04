@@ -6,7 +6,7 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 			currentCourse.markers[i].waypoints[n].setMap(null);
 			currentCourse.markers[i].waypoints[n] = null;
 		}
-	} else {currentCourse.markers[i] = []; currentCourse.markers[i].waypoints = [];}
+	} else {currentCourse.markers[i] = {}; currentCourse.markers[i].waypoints = {};}
 	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
  	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
 		position: {lat: Number(lat), lng: Number(lon)},
@@ -49,7 +49,7 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 											name: object.get('Name'), 
 											id: object.id, 
 											maps: {},
-											markers: [{waypoints: [{}]}]
+											markers: {waypoints: []}
 										});
     				}	
     				$scope.courseDatabases = courseEntries;
