@@ -170,7 +170,7 @@
 			if (currentCourse.maps[i]===undefined) {	
 				// Each map needs a unique ref, so use the name googleMap + course object id + hole number
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
-				console.log(JSON.stringify(currentCourse.maps[i]));
+				//console.log(JSON.stringify(currentCourse.maps[i]));
 				// Drop a marker at the hole location
 				if (drawPin) {
 					drawMarker(currentCourse, i, lat, lon);
