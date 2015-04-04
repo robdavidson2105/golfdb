@@ -28,6 +28,7 @@
         </div>
 	
         <div ng-init="isEditing = false; showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
+			<h3>{{courseDatabase.name}}
                 <a href ng-show="showHoles !== true" ng-click="showHoles = true" class="myButton">Show Holes</a>
                 <a href ng-show="showHoles === true" ng-click="showHoles = false; isEditing = false; editMaps = false" class="myButton2">Hide Holes</a>                  
             	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; editMaps = false" class="myButton">Edit</a>
@@ -37,8 +38,7 @@
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting === true" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
-				<h3>
-				{{courseDatabase.name}}
+				
 				</h3>
             <div>
 				<p>
