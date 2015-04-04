@@ -144,7 +144,7 @@
 				lat = 54;
 				lon = -2;
 				zoomLevel = 5;
-				drawPin = false;
+				drawPin = true;
 				
 				// Only checking previous holes if this isn't the first hole
 				if (i != 0) {
@@ -191,7 +191,7 @@
 					$scope.$apply(function(){
 						//currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						//currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						drawMarker(currentCourse, i, 0, e.latLng.lat(), e.latLng.lng());
+						drawMarker(currentCourse, i, numberOfWaypoints, e.latLng.lat(), e.latLng.lng());
 						//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
