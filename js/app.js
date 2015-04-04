@@ -161,7 +161,14 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			window.location.reload(false); 
 		}
 		
-
+		this.addWaypoint = function(i, currentCourse) {
+			var mapCentre = currentCourse.maps[i].getCenter();
+			currentCourse.holes[i].Waypoints.push({
+				Description: "New Waypoint",
+				Lat: mapCentre.lat,
+				Lon: mapCentre.long
+			});
+		}
 		
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
@@ -214,16 +221,6 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 						console.log(currentCourse.holes[i].Waypoints[n].Description);
 					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 				}
-				/*
-				// Register a listener for a click event - if the map is clicked then we'll put a marker at that location
-				google.maps.event.addListener(currentCourse.maps[i],'click',function(e) {
-					$scope.$apply(function(){
-						//currentCourse.holes[i].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
-						//currentCourse.holes[i].Long = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						drawMarker(currentCourse, i, numberOfWaypoints, e.latLng.lat(), e.latLng.lng());
-						//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
-					});
-				}); */
 			}
 		}	
 	});
