@@ -79,9 +79,9 @@
 					<td align="center">
 						<table class="table table-striped table-bordered table-condensed" style="margin-bottom: 0px;">
 						<tr data-ng-repeat="Waypoint in courseDatabase.holes[i-1].Waypoints">
-							<td ng-show="!editMaps">{{Waypoint.Description}}</td>
+							<td ng-show="!editMaps" align="left">{{Waypoint.Description}}</td>
 							<td ng-show="editMaps">
-								<input style="text-align: center" maxlength="20" size="20" ng-model="Waypoint.Description" placeholder="Description"/>
+								<input style="text-align: left" maxlength="20" size="20" ng-model="Waypoint.Description" placeholder="Description"/>
 							</td>
 							<td ng-show="!editMaps" align="center">{{Waypoint.Lat}}</td>
 							<td ng-show="editMaps">
