@@ -131,11 +131,12 @@
 		
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
-			var zoomLevel = 18;
+			var zoomLevel = 17;
 			var drawPin = true;
-			var lat = 54;
-			var lon = -2;
-			/*
+			var lat = currentCourse.holes[i].Waypoints[0].Lat;
+			var lon = currentCourse.holes[i].Waypoints[0].Lon;
+			
+			
 			if (lat == 0 || lon == 0)
 			{
 				// if there's not coordinates saved yet - then let's see if there's any from the previous hole
@@ -148,15 +149,15 @@
 				// Only checking previous holes if this isn't the first hole
 				if (i != 0) {
 					// if the previous hole has non-default values - then lets use them
-					if (currentCourse.holes[i-1].Lat != 0 && currentCourse.holes[i-1].Long != 0) {
-						lat = currentCourse.holes[i-1].Lat;
-						lon = currentCourse.holes[i-1].Long;
+					if (currentCourse.holes[i-1].Waypoints[0].Lat != 0 && currentCourse.holes[i-1].Waypoints[0].Lon != 0) {
+						lat = currentCourse.holes[i-1].Waypoints[0].Lat;
+						lon = currentCourse.holes[i-1].Waypoints[0].Lon;
 						// and zoom out a bit too
-						zoomLevel = 17;
+						zoomLevel = 16;
 					}
 				}	
 			}
-			*/
+			
 			var myCenter=new google.maps.LatLng(lat,lon);  //centre the map on the lat, lon
 			
 			// Set the default map properties = centred on the hole, zoomed to the right level, and a satellite view
@@ -170,10 +171,13 @@
 			if (currentCourse.maps[i]===undefined) {	
 				// Each map needs a unique ref, so use the name googleMap + course object id + hole number
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
-				//console.log(JSON.stringify(currentCourse.maps[i]));
 				// Drop a marker at the hole location
 				if (drawPin) {
-					drawMarker(currentCourse, i, lat, lon);
+					var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
+					for (var n = 0; n < numberOfWayPoints; n++ ) {
+						drawMarker(currentCourse, i, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon);
+					}
+					
 				}
 
 				// Register a listener for a click event - if the map is clicked then we'll put a marker at that location
