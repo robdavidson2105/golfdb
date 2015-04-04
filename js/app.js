@@ -207,16 +207,16 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 				console.log("number of waypoints " + numberOfWaypoints);
 				for (var n = 0; n < numberOfWaypoints; n++ ) {
-						console.log(currentCourse.holes[i].Waypoints[n].Lat);
-						console.log(currentCourse.holes[i].Waypoints[n].Lon);
-						console.log(currentCourse.holes[i].Waypoints[n].Description);
+						//console.log(currentCourse.holes[i].Waypoints[n].Lat);
+						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
+						//console.log(currentCourse.holes[i].Waypoints[n].Description);
 					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 				}
 			}
 		}
 		
 		this.deleteWaypoint = function(holeIndex, waypointIndex, currentCourse) {
-			alert("Delete");
+			currentCourse.holes[holeIndex].Waypoints.splice(waypointIndex,1);
 		}
 		
 		this.addWaypoint = function(holeIndex, currentCourse) {
