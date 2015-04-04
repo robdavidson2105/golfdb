@@ -48,7 +48,7 @@
 			var hole = [];
 			// Setup a new course with some default values
 			for (var i = 0; i < 18; i++) { 
-				hole[i] = {HoleIndex: i, Par: 4, Lat: 0, Long: 0, StrokeIndex: 0};
+				hole[i] = {HoleIndex: i, Par: 4, StrokeIndex: 0, Waypoints:[{Description: "Green", Lat: 0,Lon: 0}]};
 				currentCourse.holes[i] = hole[i];
 			};
 			
@@ -68,6 +68,7 @@
 			Course.get(currentCourse.id, {
 				success: function (CourseU) {
 					CourseU.set("Name", currentCourse.name);
+					/*
 					var hole = [];
 					for (var i = 0; i < 18; i++) { 
 						hole[i] = {
@@ -78,7 +79,7 @@
 							Long: Number(currentCourse.holes[i].Long)
 						};
 						currentCourse.holes[i] = hole[i];
-					};
+					}; */
 					CourseU.set("Holes", currentCourse.holes);
 					CourseU.save();		
 				}
