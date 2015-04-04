@@ -13,16 +13,16 @@
 		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
-			var drawMarker = function(currentCourse, i, lat, lon) {	
-				if (currentCourse.markers[i] != undefined) {
-					currentCourse.markers[i].setMap(null);
-					currentCourse.markers[i] = null;
-				}
-			 	currentCourse.markers[i] = new google.maps.Marker({
+			var drawMarker = function(currentCourse, i, n, lat, lon, description) {	
+				if (currentCourse.markers[i].waypoints[n] != undefined) {
+					currentCourse.markers[i].waypoints[n].setMap(null);
+					currentCourse.markers[i].waypoints[n] = null;
+				} 
+			 	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
 			  						position: {lat: lat, lng: lon},
 			  						map: currentCourse.maps[i],
 									draggable: true,
-			  						title: 'Hole '
+			  						title: description
 		  			});
 					google.maps.event.addListener(currentCourse.markers[i], 'dragend', function() {alert("Drag end");});
 								

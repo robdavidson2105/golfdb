@@ -29,7 +29,7 @@
 											name: object.get('Name'), 
 											id: object.id, 
 											maps: {},
-											markers: {}
+											markers: {waypoints: [{}]}
 										});
     				}	
     				$scope.courseDatabases = courseEntries;
@@ -175,7 +175,7 @@
 				if (drawPin) {
 					var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 					for (var n = 0; n < numberOfWaypoints; n++ ) {
-						drawMarker(currentCourse, i, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon);
+						drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 					}
 					
 				}
