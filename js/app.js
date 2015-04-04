@@ -69,18 +69,6 @@
 			Course.get(currentCourse.id, {
 				success: function (CourseU) {
 					CourseU.set("Name", currentCourse.name);
-					/*
-					var hole = [];
-					for (var i = 0; i < 18; i++) { 
-						hole[i] = {
-							HoleIndex: i, 
-							Par: currentCourse.holes[i].Par, 
-							StrokeIndex: currentCourse.holes[i].StrokeIndex, 
-							Lat: Number(currentCourse.holes[i].Lat), 
-							Long: Number(currentCourse.holes[i].Long)
-						};
-						currentCourse.holes[i] = hole[i];
-					};  */ 
 					CourseU.set("Holes", angular.copy(currentCourse.holes));
 					CourseU.save();		
 				}
