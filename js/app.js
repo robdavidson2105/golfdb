@@ -176,6 +176,7 @@
 					var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 					console.log("number of waypoints " + numberOfWaypoints);
 					for (var n = 0; n < numberOfWaypoints; n++ ) {
+						console.log("Here");
 						console.log(currentCourse.holes[i].Waypoints[n].Lat);
 						console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						console.log(currentCourse.holes[i].Waypoints[n].Description);
