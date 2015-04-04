@@ -21,6 +21,7 @@
 			 	currentCourse.markers[i] = new google.maps.Marker({
 			  						position: {lat: lat, lng: lon},
 			  						map: currentCourse.maps[i],
+									draggable: true,
 			  						title: 'Hole '
 		  			});
 					google.maps.event.addListener(currentCourse.markers[i], 'dragend', function() {alert("Drag end");});
