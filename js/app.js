@@ -224,7 +224,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				Lat: lat,
 				Lon: lon
 			});
-			drawMarker($scope, currentCourse, holeIndex, (currentCourse.holes.Waypoints.length - 1), lat, lon, "New Waypoint");
+			drawMarker($scope, currentCourse, holeIndex, (currentCourse.holes[holeIndex].Waypoints.length - 1), lat, lon, "New Waypoint");
 		}	
 	});
 })();
