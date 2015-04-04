@@ -40,14 +40,13 @@
                 <a href ng-show="deleting === true" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
                 <a href ng-show="deleting === true" ng-click="deleting = false" class="myButton2">No</a>
 			</h2>
-            <hr>
             <div>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
                     <input ng-model="courseDatabase.name" ng-show="isEditing" placeholder="Name" required></input>
                     <input type="submit" value="Save" ng-show="isEditing" ng-click="isEditing = false" class="myButton2"></input>
                 </form>
             </div>
-			
+			<hr>
 			<div style="width: 98%; margin-left: 1%; margin-right: 1%">
 			<table ng-show="showHoles === true" class="table table-striped table-bordered table-condensed" align="center">
 				<tr>
