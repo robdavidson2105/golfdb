@@ -80,7 +80,7 @@
 						};
 						currentCourse.holes[i] = hole[i];
 					};  */ 
-					CourseU.set("Holes", currentCourse.holes);
+					//CourseU.set("Holes", currentCourse.holes);
 					CourseU.save();		
 				}
 			});
