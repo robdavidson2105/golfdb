@@ -214,6 +214,11 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				}
 			}
 		}
+		
+		this.deleteWaypoint = function(holeIndex, waypointIndex, currentCourse) {
+			alert("Delete");
+		}
+		
 		this.addWaypoint = function(holeIndex, currentCourse) {
 			this.showMap(holeIndex, currentCourse);
 			var mapCentre = currentCourse.maps[holeIndex].getCenter();
