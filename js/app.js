@@ -1,8 +1,8 @@
 function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, description) {	
-	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
+	console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);
 	
-	if (currentCourse.markers[i] != undefined) {
-		console.log("Already got: currentCourse.markers[" + holeIndex + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[waypointIndex]);
+	if (currentCourse.markers[holeIndex] != undefined) {
+		console.log("Already got: currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
 		if (currentCourse.markers[holeIndex].waypoints[waypointIndex] != undefined) {
 			currentCourse.markers[holeIndex].waypoints[waypointIndex].setMap(null);
 			currentCourse.markers[holeIndex].waypoints[waypointIndex] = null;
