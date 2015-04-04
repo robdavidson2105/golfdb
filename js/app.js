@@ -79,7 +79,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			var hole = [];
 			// Setup a new course with some default values
 			for (var i = 0; i < 18; i++) { 
-				hole[i] = {HoleIndex: i, Par: 4, StrokeIndex: 0, Waypoints:[{Description: "Green", Lat: 54,Lon: -2}]};
+				hole[i] = {HoleIndex: i, Par: 4, StrokeIndex: 0, Waypoints:[{Description: "Green", Lat: 0,Lon: 0}]};
 				currentCourse.holes[i] = hole[i];
 			};
 			
@@ -175,7 +175,6 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				lat = 54;
 				lon = -2;
 				zoomLevel = 5;
-				drawPin = true;
 				
 				// Only checking previous holes if this isn't the first hole
 				if (i != 0) {
