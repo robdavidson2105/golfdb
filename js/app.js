@@ -63,7 +63,7 @@
 		// Controller function to update a course
 		this.updateCourse = function(currentCourse){
 			var Course = new Parse.Query(GetCourses);
-			console.log(JSON.stringify(currentCourse));
+			console.log(angular.toJson(currentCourse));
 			// The objectId is a unique identifier which allows us to select the course
 			Course.equalTo("objectId", currentCourse.id);
 			Course.get(currentCourse.id, {
@@ -81,7 +81,7 @@
 						};
 						currentCourse.holes[i] = hole[i];
 					};  */ 
-					//CourseU.set("Holes", currentCourse.holes);
+					CourseU.set("Holes", angular.copy(currentCourse.holes));
 					CourseU.save();		
 				}
 			});
