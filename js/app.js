@@ -174,6 +174,7 @@
 				// Drop a marker at the hole location
 				if (drawPin) {
 					var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
+					console.log("number of waypoints " + numberOfWaypoints);
 					for (var n = 0; n < numberOfWaypoints; n++ ) {
 						drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 					}

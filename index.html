@@ -14,9 +14,11 @@
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
 			var drawMarker = function(currentCourse, i, n, lat, lon, description) {	
-				if (currentCourse.markers[i].waypoints[n] != undefined) {
-					currentCourse.markers[i].waypoints[n].setMap(null);
-					currentCourse.markers[i].waypoints[n] = null;
+				if (currentCourse.markers[i] != undefined) {
+					if (currentCourse.markers[i].waypoints[n] != undefined) {
+						currentCourse.markers[i].waypoints[n].setMap(null);
+						currentCourse.markers[i].waypoints[n] = null;
+					}
 				} 
 			 	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
 			  						position: {lat: lat, lng: lon},
