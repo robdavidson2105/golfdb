@@ -1,6 +1,6 @@
 function drawMarker(currentCourse, i, n, lat, lon, description) {	
 	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
-	console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
+	
 	if (currentCourse.markers[i] != undefined) {
 		console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
 		if (currentCourse.markers[i].waypoints[n] != undefined) {
@@ -9,6 +9,7 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 		}
 	} else {currentCourse.markers[i] = {}; currentCourse.markers[i].waypoints = {};}
 	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
+	console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
  	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
 		position: {lat: Number(lat), lng: Number(lon)},
   		map: currentCourse.maps[i],
