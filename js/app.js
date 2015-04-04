@@ -1,4 +1,4 @@
-function drawMarker(currentCourse, i, n, lat, lon, description) {	
+function drawMarker($scope, currentCourse, i, n, lat, lon, description) {	
 	console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
 	
 	if (currentCourse.markers[i] != undefined) {
@@ -20,10 +20,10 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 		google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 
 			'dragend', 
 			function(e) {	
-				$scope.$apply(function() {
+				$scope.$apply(function($scope) {
 					currentCourse.holes[i].Waypoints[n].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 					currentCourse.holes[i].Waypoints[n].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
-					drawMarker(currentCourse, i, n, e.latLng.lat(), e.latLng.lng());
+					drawMarker($scope, currentCourse, i, n, e.latLng.lat(), e.latLng.lng());
 					//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
@@ -212,7 +212,7 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 						console.log(currentCourse.holes[i].Waypoints[n].Lat);
 						console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						console.log(currentCourse.holes[i].Waypoints[n].Description);
-					drawMarker(currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
+					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
 				}
 				/*
 				// Register a listener for a click event - if the map is clicked then we'll put a marker at that location
