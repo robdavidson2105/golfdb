@@ -21,7 +21,7 @@
 						currentCourse.markers[i].waypoints[n].setMap(null);
 						currentCourse.markers[i].waypoints[n] = null;
 					}
-				} else {currentCourse.markers[i] = {};}
+				} else {currentCourse.markers[i] = {}; currentCourse.markers[i].waypoints = {};}
 				console.log("currentCourse.markers[" + i + "] = " + currentCourse.markers[i]);
 			 	currentCourse.markers[i].waypoints[n] = new google.maps.Marker({
 					position: {lat: Number(lat), lng: Number(lon)},
