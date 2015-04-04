@@ -215,7 +215,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			}
 		}
 		this.addWaypoint = function(i, currentCourse) {
-			showMap(i, currentCourse);
+			this.showMap(i, currentCourse);
 			var mapCentre = currentCourse.maps[i].getCenter();
 			currentCourse.holes[i].Waypoints.push({
 				Description: "New Waypoint",
