@@ -29,7 +29,7 @@
 									draggable: true,
 			  						title: description
 		  			});
-					google.maps.event.addListener(currentCourse.markers[i], 'dragend', function() {alert("Drag end");});
+					google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 'dragend', function() {alert("Drag end");});
 								
 							}
 		</script>
