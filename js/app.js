@@ -63,6 +63,7 @@
 		// Controller function to update a course
 		this.updateCourse = function(currentCourse){
 			var Course = new Parse.Query(GetCourses);
+			console.log(JSON.stringify(currentCourse.holes));
 			// The objectId is a unique identifier which allows us to select the course
 			Course.equalTo("objectId", currentCourse.id);
 			Course.get(currentCourse.id, {
