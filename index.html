@@ -97,7 +97,13 @@
 								<input style="text-align: center" maxlength="20" size="20" ng-model="Waypoint.Description" placeholder="Description"/>
 							</td>
 							<td ng-show="!editMaps" align="center">{{Waypoint.Lat}}</td>
+							<td ng-show="editMaps">
+								<input style="text-align: center" maxlength="12" size="12" ng-model="Waypoint.Lat" placeholder="0.000000"/>
+							</td>
 							<td ng-show="!editMaps" align="center">{{Waypoint.Lon}}</td>
+							<td ng-show="editMaps">
+								<input style="text-align: center" maxlength="12" size="12" ng-model="Waypoint.Lon" placeholder="0.000000"/>
+							</td>
 						</tr>
 						</table>
 					</td>
