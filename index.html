@@ -92,6 +92,9 @@
 								<input style="text-align: center" maxlength="12" size="12" ng-model="Waypoint.Lon" placeholder="0.000000"/>
 							</td>
 						</tr>
+						<div ng-show="editMaps">
+							<a href ng-click="courseCtrl.showMap($index,courseDatabase)" class="myButton">Add waypoint</a>
+						</div>
 						</table>
 					</td>
 
