@@ -204,7 +204,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				// Drop a marker at the hole location
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
-				console.log("number of waypoints " + numberOfWaypoints);
+				//console.log("number of waypoints " + numberOfWaypoints);
 				for (var n = 0; n < numberOfWaypoints; n++ ) {
 						//console.log(currentCourse.holes[i].Waypoints[n].Lat);
 						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
