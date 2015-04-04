@@ -16,6 +16,7 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 		draggable: true,
 		title: description
 		});
+	console.log("currentCourse.markers[" + i + "].waypoints[" + n + "] = " + currentCourse.markers[i].waypoints[n]);
 		google.maps.event.addListener(currentCourse.markers[i].waypoints[n], 'dragend', function() {alert("Drag end");});
 					
 				}
