@@ -68,7 +68,7 @@
 					<th style="text-align: center">Par</th>
 					<th style="text-align: center">Stroke Index</th>
 					<th style="text-align: center">Waypoints</th>
-					<th style="text-align: center" ng-show="editMaps===true">Map</th>
+					<th style="text-align: center" ng-show="editMaps">Map</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
 					<td align="center" ng-show="!editMaps">
@@ -101,9 +101,7 @@
 						</tr>
 						</table>
 					</td>
-					<td ng-show="editMaps" align="center">
-						<input style="text-align: center" maxlength="12" size="12" ng-model="courseDatabase.holes[i-1].Long" placeholder="0.000000"/>
-					</td>
+
 					<td ng-show="editMaps" align="center">
 						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
