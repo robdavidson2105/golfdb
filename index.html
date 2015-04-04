@@ -22,8 +22,9 @@
 			  						position: {lat: lat, lng: lon},
 			  						map: currentCourse.maps[i],
 			  						title: 'Hole '
-		  						});
-								console.log(JSON.stringify(currentCourse.markers[i]));
+		  			});
+					google.maps.event.addListener(currentCourse.markers[i], 'dragend', function() {alert("Drag end");});
+								
 							}
 		</script>
     </head>
