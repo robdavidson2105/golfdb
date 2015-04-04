@@ -158,8 +158,6 @@ function drawMarker(currentCourse, i, n, lat, lon, description) {
 			var lat = currentCourse.holes[i].Waypoints[0].Lat;
 			var lon = currentCourse.holes[i].Waypoints[0].Lon;
 			
-			test();
-			
 			
 			if (lat == 0 || lon == 0)
 			{
