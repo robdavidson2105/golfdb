@@ -163,8 +163,8 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 		// Controller function to display a map for the selected course and the selected hole
 		this.showMap = function(i, currentCourse) {
 			var zoomLevel = 17;
-			var lat = currentCourse.holes[i].Waypoints[0].Lat;
-			var lon = currentCourse.holes[i].Waypoints[0].Lon;
+			var lat = Number(currentCourse.holes[i].Waypoints[0].Lat);
+			var lon = Number(currentCourse.holes[i].Waypoints[0].Lon);
 	
 			if (lat == 0 || lon == 0)
 			{
@@ -177,9 +177,9 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				// Only checking previous holes if this isn't the first hole
 				if (i != 0) {
 					// if the previous hole has non-default values - then lets use them
-					if (currentCourse.holes[i-1].Waypoints[0].Lat != 0 && currentCourse.holes[i-1].Waypoints[0].Lon != 0) {
-						lat = currentCourse.holes[i-1].Waypoints[0].Lat;
-						lon = currentCourse.holes[i-1].Waypoints[0].Lon;
+					if (Number(currentCourse.holes[i-1].Waypoints[0].Lat) != 0 && Number(currentCourse.holes[i-1].Waypoints[0].Lon) != 0) {
+						lat = Number(currentCourse.holes[i-1].Waypoints[0].Lat);
+						lon = Number(currentCourse.holes[i-1].Waypoints[0].Lon);
 						// and zoom out a bit too
 						zoomLevel = 16;
 					}
@@ -206,7 +206,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 					console.log("Description: " + currentCourse.holes[i].Waypoints[n].Description +  ", lat: " + currentCourse.holes[i].Waypoints[n].Lat + ", lon:" + currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Description);
-					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
+					drawMarker($scope, currentCourse, i, n, Number(currentCourse.holes[i].Waypoints[n].Lat), Number(currentCourse.holes[i].Waypoints[n].Lon), currentCourse.holes[i].Waypoints[n].Description);
 				}
 			}
 		}
