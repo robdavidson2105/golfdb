@@ -183,7 +183,9 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 						// and zoom out a bit too
 						zoomLevel = 16;
 					}
-				}	
+				}
+				currentCourse.holes[i].Waypoints[0].Lat = lat;
+				currentCourse.holes[i].Waypoints[0].Lon = lon;	
 			}
 			
 			var myCenter=new google.maps.LatLng(lat,lon);  //centre the map on the lat, lon
