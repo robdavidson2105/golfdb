@@ -1,21 +1,18 @@
 function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, description) {	
-	//console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);	
 	if (currentCourse.markers[holeIndex] != undefined) {
-		//console.log("Already got: currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
 		if (currentCourse.markers[holeIndex].waypoints[waypointIndex] != undefined) {
 			currentCourse.markers[holeIndex].waypoints[waypointIndex].setMap(null);
 			currentCourse.markers[holeIndex].waypoints[waypointIndex] = null;
 		}
 	} else {currentCourse.markers[holeIndex] = {}; currentCourse.markers[holeIndex].waypoints = {};}
-	//console.log("currentCourse.markers[" + holeIndex + "] = " + currentCourse.markers[holeIndex]);
-	//console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
+
  	currentCourse.markers[holeIndex].waypoints[waypointIndex] = new google.maps.Marker({
 		position: {lat: Number(lat), lng: Number(lon)},
   		map: currentCourse.maps[holeIndex],
 		draggable: true,
 		title: description
 		});
-	//console.log("currentCourse.markers[" + holeIndex + "].waypoints[" + waypointIndex + "] = " + currentCourse.markers[holeIndex].waypoints[waypointIndex]);
+
 		google.maps.event.addListener(currentCourse.markers[holeIndex].waypoints[waypointIndex], 
 			'dragend', 
 			function(e) {	
@@ -23,7 +20,6 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
 					drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(), description);
-					//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
 					
@@ -94,7 +90,6 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 		// Controller function to update a course
 		this.updateCourse = function(currentCourse){
 			var Course = new Parse.Query(GetCourses);
-			//console.log(angular.toJson(currentCourse));
 			// The objectId is a unique identifier which allows us to select the course
 			Course.equalTo("objectId", currentCourse.id);
 			Course.get(currentCourse.id, {
@@ -208,7 +203,15 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 					console.log("Description: " + currentCourse.holes[i].Waypoints[n].Description +  ", lat: " + currentCourse.holes[i].Waypoints[n].Lat + ", lon:" + currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Description);
-					drawMarker($scope, currentCourse, i, n, Number(currentCourse.holes[i].Waypoints[n].Lat), Number(currentCourse.holes[i].Waypoints[n].Lon), currentCourse.holes[i].Waypoints[n].Description);
+					drawMarker(
+						$scope, 
+						currentCourse, 
+						i, 
+						n, 
+						Number(currentCourse.holes[i].Waypoints[n].Lat), 
+						Number(currentCourse.holes[i].Waypoints[n].Lon), 
+						currentCourse.holes[i].Waypoints[n].Description
+					);
 				}
 			}
 		}
@@ -227,6 +230,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			}
 		}
 		
+		// Controller function to create a new waypoint
 		this.addWaypoint = function(holeIndex, currentCourse) {
 			this.showMap(holeIndex, currentCourse);
 			var mapCentre = currentCourse.maps[holeIndex].getCenter();
@@ -237,7 +241,15 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				Lat: lat,
 				Lon: lon
 			});
-			drawMarker($scope, currentCourse, holeIndex, (currentCourse.holes[holeIndex].Waypoints.length - 1), lat, lon, "New Waypoint");
+			drawMarker(
+				$scope, 
+				currentCourse, 
+				holeIndex, 
+				(currentCourse.holes[holeIndex].Waypoints.length - 1), 
+				lat, 
+				lon, 
+				"New Waypoint"
+			);
 		}	
 	});
 })();
