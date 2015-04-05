@@ -22,7 +22,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				$scope.$apply(function($scope) {
 					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
-					drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng());
+					drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(), description);
 					//drawMarker(currentCourse, i, currentCourse.holes[i].Lat, currentCourse.holes[i].Long);
 					});
 				});
@@ -203,7 +203,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
 				//console.log("number of waypoints " + numberOfWaypoints);
 				for (var n = 0; n < numberOfWaypoints; n++ ) {
-					console.log("Description: " + currentCourse.holes[i].Waypoints[n].Description +  "lat: " + currentCourse.holes[i].Waypoints[n].Lat + ", lon:" + currentCourse.holes[i].Waypoints[n].Lon);
+					console.log("Description: " + currentCourse.holes[i].Waypoints[n].Description +  ", lat: " + currentCourse.holes[i].Waypoints[n].Lat + ", lon:" + currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
 						//console.log(currentCourse.holes[i].Waypoints[n].Description);
 					drawMarker($scope, currentCourse, i, n, currentCourse.holes[i].Waypoints[n].Lat, currentCourse.holes[i].Waypoints[n].Lon, currentCourse.holes[i].Waypoints[n].Description);
