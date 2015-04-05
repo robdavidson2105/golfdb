@@ -213,8 +213,18 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			}
 		}
 		
+		// Controller function to delete one of the waypoints on a hole
 		this.deleteWaypoint = function(holeIndex, waypointIndex, currentCourse) {
+			// Use splice to delete the details in the array - and shift all the following array entries down
 			currentCourse.holes[holeIndex].Waypoints.splice(waypointIndex,1);
+			// Now check if we have a marker drawn on the map
+			if (currentCourse.markers[holeIndex] != undefined) {
+				// If there is a marker then remove it from the map
+				if (currentCourse.markers[holeIndex].waypoints[waypointIndex] != undefined) {
+					currentCourse.markers[holeIndex].waypoints[waypointIndex].setMap(null);
+					currentCourse.markers[holeIndex].waypoints[waypointIndex] = null;
+				}
+			}
 		}
 		
 		this.addWaypoint = function(holeIndex, currentCourse) {
