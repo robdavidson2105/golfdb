@@ -17,9 +17,16 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			'dragend', 
 			function(e) {	
 				$scope.$apply(function($scope) {
-					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
-					currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
-					drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(), description);
+					if ($scope.courseCtrl.editMaps) {
+						currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
+						currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
+						drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(), description);
+					} else {
+						drawMarker($scope, currentCourse, holeIndex, waypointIndex, 
+							currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat, 
+							currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon, 
+							description);
+					}
 					});
 				});
 					

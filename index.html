@@ -13,7 +13,7 @@
 		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
     </head>
-    <body ng-controller="courseController as courseCtrl">
+    <body ng-controller="courseController as courseCtrl" ng-cloak>
     <h1 init="addingCourse = false">Golf Course Database</h1>
         <div>
             <form name="signIn">
@@ -27,13 +27,13 @@
             </form>
         </div>
 	
-        <div ng-init="isEditing = false; showHoles = false; deleting = false; editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
+        <div ng-init="isEditing = false; showHoles = false; deleting = false; courseCtrl.editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
 			<h3>{{courseDatabase.name}}
                 <a href ng-show="!showHoles" ng-click="showHoles = true" class="myButton">Show Holes</a>
-                <a href ng-show="showHoles" ng-click="showHoles = false; isEditing = false; editMaps = false" class="myButton2">Hide Holes</a>                  
-            	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; editMaps = false" class="myButton">Edit</a>
-				<a href ng-show="isEditing && !editMaps" ng-click="isEditing = true; showHoles = true; editMaps = true" class="myButton">Edit Maps</a>
-				<a href ng-show="isEditing" ng-click="isEditing = false; showHoles = false; editMaps = false" class="myButton2">Cancel</a>
+                <a href ng-show="showHoles" ng-click="showHoles = false; isEditing = false; courseCtrl.editMaps = false" class="myButton2">Hide Holes</a>                  
+            	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; courseCtrl.editMaps = false" class="myButton">Edit</a>
+				<a href ng-show="isEditing && !editMaps" ng-click="isEditing = true; showHoles = true; courseCtrl.editMaps = true" class="myButton">Edit Maps</a>
+				<a href ng-show="isEditing" ng-click="isEditing = false; showHoles = true; courseCtrl.editMaps = false" class="myButton2">Cancel</a>
                 <a href ng-click="deleting = true" ng-show="isEditing" class="myButton2">Delete</a>
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
@@ -55,14 +55,11 @@
 					<th style="text-align: center">Par</th>
 					<th style="text-align: center">Stroke Index</th>
 					<th style="text-align: center">Waypoints</th>
-					<th style="text-align: center" ng-show="editMaps">Map</th>
+					<th style="text-align: center">Map</th>
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
-					<td align="center" ng-show="!editMaps">
-						{{i}}
-					</td>
-					<td align="center" ng-show="editMaps">
-						<a href ng-click="courseCtrl.showMap($index,courseDatabase)" class="myButton">Edit Hole {{i}} Map</a>
+					<td align="center" ng-show="showHoles">
+						<a href ng-click="courseCtrl.showMap($index,courseDatabase)" class="myButton">Show Hole {{i}} Map</a>
 					</td>
 					<td ng-show="!isEditing" align="center">
 						{{courseDatabase.holes[i-1].Par}}
@@ -79,29 +76,29 @@
 					<td align="center">
 						<table class="table table-striped table-bordered table-condensed" style="margin-bottom: 0px;">
 						<tr data-ng-repeat="Waypoint in courseDatabase.holes[i-1].Waypoints">
-							<td ng-show="!editMaps" align="left">{{Waypoint.Description}}</td>
-							<td ng-show="editMaps">
+							<td ng-show="!courseCtrl.editMaps" align="left">{{Waypoint.Description}}</td>
+							<td ng-show="courseCtrl.editMaps">
 								<input style="text-align: left" maxlength="20" size="20" ng-model="Waypoint.Description" placeholder="Description"/>
 							</td>
-							<td ng-show="!editMaps" align="center">{{Waypoint.Lat}}</td>
-							<td ng-show="editMaps">
+							<td ng-show="!courseCtrl.editMaps" align="center">{{Waypoint.Lat}}</td>
+							<td ng-show="courseCtrl.editMaps">
 								<input style="text-align: center" maxlength="12" size="12" ng-model="Waypoint.Lat" placeholder="0.000000"/>
 							</td>
-							<td ng-show="!editMaps" align="center">{{Waypoint.Lon}}</td>
-							<td ng-show="editMaps">
+							<td ng-show="!courseCtrl.editMaps" align="center">{{Waypoint.Lon}}</td>
+							<td ng-show="courseCtrl.editMaps">
 								<input style="text-align: center" maxlength="12" size="12" ng-model="Waypoint.Lon" placeholder="0.000000"/>
 							</td>
-							<td ng-show="editMaps && ($index != 0)">
+							<td ng-show="courseCtrl.editMaps && ($index != 0)">
 								<a href ng-click="courseCtrl.deleteWaypoint((i-1), $index, courseDatabase)" class="myButton2">x</a>
 							</td>
 						</tr>
 						
 						</table>
-						<div ng-show="editMaps" align="left">
+						<div ng-show="courseCtrl.editMaps" align="left">
 							<a href ng-click="courseCtrl.addWaypoint($index,courseDatabase)" class="myButton">Add waypoint</a>
 						</div>
 					</td>
-					<td ng-show="editMaps" align="center">
+					<td align="center">
 						<div id="googleMap{{courseDatabase.id}}{{$index}}" style="width:500px;height:380px;"></div>
 					</td>
 				</tr>
