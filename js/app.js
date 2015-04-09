@@ -12,6 +12,10 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 		draggable: true,
 		title: description
 		});
+		var infowindow = new google.maps.InfoWindow({
+		      content: description
+		});
+		infowindow.open(currentCourse.maps[holeIndex], currentCourse.markers[holeIndex].waypoints[waypointIndex]);
 
 		google.maps.event.addListener(currentCourse.markers[holeIndex].waypoints[waypointIndex], 
 			'dragend', 
@@ -20,12 +24,13 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 					if ($scope.courseCtrl.editMaps) {
 						currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat = Math.round(e.latLng.lat() * 1000000) / 1000000;
 						currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon = Math.round(e.latLng.lng() * 1000000) / 1000000;
-						drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(), description);
+						drawMarker($scope, currentCourse, holeIndex, waypointIndex, e.latLng.lat(), e.latLng.lng(),
+						currentCourse.holes[holeIndex].Waypoints[waypointIndex].Description);
 					} else {
 						drawMarker($scope, currentCourse, holeIndex, waypointIndex, 
 							currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lat, 
 							currentCourse.holes[holeIndex].Waypoints[waypointIndex].Lon, 
-							description);
+							currentCourse.holes[holeIndex].Waypoints[waypointIndex].Description);
 					}
 					});
 				});
@@ -154,12 +159,38 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				}
 			})
 		}
+		
+		// Controller function to centre the map on the last hole
+		// this is useful when mapping a new course
+		this.centreMap = function(i, currentCourse) {
+			// Get the coords of the last hole's first waypoint
+			lat = Number(currentCourse.holes[i-1].Waypoints[0].Lat);
+			lon = Number(currentCourse.holes[i-1].Waypoints[0].Lon);
+			// Make this hole's first waypoint the same as the last one
+			currentCourse.holes[i].Waypoints[0].Lat = lat;
+			currentCourse.holes[i].Waypoints[0].Lon = lon;
+			// Centre both the map and the first waypoint on these new coords
+			var myCenter=new google.maps.LatLng(lat,lon);
+			currentCourse.maps[i].setCenter(myCenter);
+			currentCourse.markers[i].waypoints[0].setPosition(myCenter);
+		}
 
 		// Controller function to logout
 		this.logOut = function(details){
 			Parse.User.logOut();
 			var currentUser = Parse.User.current();
 			window.location.reload(false); 
+		}
+		
+		this.updateWaypointDescription = function(holeIndex, waypointIndex, currentCourse) {
+			currentCourse.markers[holeIndex].waypoints[waypointIndex].setTitle(currentCourse.holes[holeIndex].Waypoints[waypointIndex].Description);
+		}
+		
+		this.showMaps = function(currentCourse) {
+			console.log("Show maps");
+			for (var i = 0; i < 18; i++) {
+				this.showMap(i, currentCourse);
+			}
 		}
 		
 		// Controller function to display a map for the selected course and the selected hole
@@ -191,6 +222,7 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 			}
 			
 			var myCenter=new google.maps.LatLng(lat,lon);  //centre the map on the lat, lon
+			//console.log("Map " + i + " centre: " + lat + "," + lon);
 			
 			// Set the default map properties = centred on the hole, zoomed to the right level, and a satellite view
 			var mapProp = {
@@ -205,11 +237,8 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 				currentCourse.maps[i] = new google.maps.Map(document.getElementById("googleMap" + currentCourse.id + i), mapProp);
 				// Drop a marker at the hole location
 				var numberOfWaypoints = currentCourse.holes[i].Waypoints.length;
-				//console.log("number of waypoints " + numberOfWaypoints);
 				for (var n = 0; n < numberOfWaypoints; n++ ) {
-					console.log("Description: " + currentCourse.holes[i].Waypoints[n].Description +  ", lat: " + currentCourse.holes[i].Waypoints[n].Lat + ", lon:" + currentCourse.holes[i].Waypoints[n].Lon);
-						//console.log(currentCourse.holes[i].Waypoints[n].Lon);
-						//console.log(currentCourse.holes[i].Waypoints[n].Description);
+
 					drawMarker(
 						$scope, 
 						currentCourse, 
@@ -220,6 +249,14 @@ function drawMarker($scope, currentCourse, holeIndex, waypointIndex, lat, lon, d
 						currentCourse.holes[i].Waypoints[n].Description
 					);
 				}
+				// A bug with google maps means that maps which are initially hidden don't draw correctly
+				// this workaround triggers a resize to redraw the map
+				// The bug shifts the centre of the map - so we have to re-centre once re-drawn
+				google.maps.event.addListenerOnce(currentCourse.maps[i], 'idle', function() {
+				   google.maps.event.trigger(currentCourse.maps[i], 'resize');
+				   currentCourse.maps[i].setCenter(myCenter);
+				   //console.log("Map " + i + " centre (callback): " + currentCourse.maps[i].getCenter().toString());
+				});
 			}
 		}
 		

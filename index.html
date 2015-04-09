@@ -29,11 +29,11 @@
 	
         <div ng-init="isEditing = false; showHoles = false; deleting = false; courseCtrl.editMaps = false" ng-repeat="courseDatabase in courseCtrl.courseDatabases">
 			<h3>{{courseDatabase.name}}
-                <a href ng-show="!showHoles" ng-click="showHoles = true" class="myButton">Show Holes</a>
+                <a href ng-show="!showHoles" ng-click="showHoles = true; courseCtrl.showMaps(courseDatabase)" class="myButton">Show Holes</a>
                 <a href ng-show="showHoles" ng-click="showHoles = false; isEditing = false; courseCtrl.editMaps = false" class="myButton2">Hide Holes</a>                  
             	<a href ng-show="(courseDatabase.author === Username) && !isEditing" ng-click="isEditing = true; showHoles = true; courseCtrl.editMaps = false" class="myButton">Edit</a>
 				<a href ng-show="isEditing && !editMaps" ng-click="isEditing = true; showHoles = true; courseCtrl.editMaps = true" class="myButton">Edit Maps</a>
-				<a href ng-show="isEditing" ng-click="isEditing = false; showHoles = true; courseCtrl.editMaps = false" class="myButton2">Cancel</a>
+				<a href ng-show="isEditing" ng-click="isEditing = false; courseCtrl.editMaps = false" class="myButton2">Cancel</a>
                 <a href ng-click="deleting = true" ng-show="isEditing" class="myButton2">Delete</a>
                 <h4 ng-show="deleting === true">Are You Sure?</h4>
                 <a href ng-show="deleting" ng-click="courseCtrl.deleteCourse(courseDatabase)" class="myButton">Yes</a>
@@ -44,7 +44,7 @@
 				<p>
                 <form name="EditCourse" ng-submit="courseCtrl.updateCourse(courseDatabase)" novalidate>
                     <input ng-model="courseDatabase.name" ng-show="isEditing" placeholder="Name" required></input>
-                    <input type="submit" value="Save" ng-show="isEditing" ng-click="isEditing = false" class="myButton2"></input>
+                    <input type="submit" value="Save" ng-show="isEditing" ng-click="isEditing = false; courseCtrl.editMaps = false" class="myButton2"></input>
                 </form>
             </div>
 			<hr>
@@ -59,7 +59,7 @@
 				</tr>
 				<tr data-ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" >
 					<td align="center" ng-show="showHoles">
-						<a href ng-click="courseCtrl.showMap($index,courseDatabase)" class="myButton">Show Hole {{i}} Map</a>
+						Hole {{i}}
 					</td>
 					<td ng-show="!isEditing" align="center">
 						{{courseDatabase.holes[i-1].Par}}
@@ -78,7 +78,8 @@
 						<tr data-ng-repeat="Waypoint in courseDatabase.holes[i-1].Waypoints">
 							<td ng-show="!courseCtrl.editMaps" align="left">{{Waypoint.Description}}</td>
 							<td ng-show="courseCtrl.editMaps">
-								<input style="text-align: left" maxlength="20" size="20" ng-model="Waypoint.Description" placeholder="Description"/>
+								<input style="text-align: left" maxlength="20" size="20" ng-model="Waypoint.Description"
+								 ng-change="courseCtrl.updateWaypointDescription((i-1), $index, courseDatabase)" placeholder="Description"/>
 							</td>
 							<td ng-show="!courseCtrl.editMaps" align="center">{{Waypoint.Lat}}</td>
 							<td ng-show="courseCtrl.editMaps">
@@ -96,6 +97,7 @@
 						</table>
 						<div ng-show="courseCtrl.editMaps" align="left">
 							<a href ng-click="courseCtrl.addWaypoint($index,courseDatabase)" class="myButton">Add waypoint</a>
+							<a href ng-click="courseCtrl.centreMap($index,courseDatabase)" ng-show="$index != 0" class="myButton">Center Map on last hole</a>
 						</div>
 					</td>
 					<td align="center">
